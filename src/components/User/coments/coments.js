@@ -15,11 +15,10 @@ const Coments = () => {
                 </InputGroup>
                  <br />
             </div>
-            <ComentItem/>
-            <ComentItem/>
-            <ComentItem/>
-            <ComentItem/>
-            <ComentItem/>
+            <ComentItem comentText = " Я начал учить реакт и я его закончу" likeCounter = "400"/>
+            <ComentItem comentText = " Розобрался с пропсами" likeCounter = "300"/>
+            <ComentItem comentText = " Начну скгодня делать страницу с сообщениями" likeCounter = "450"/>
+            
             <br />
             <br />
         </div>

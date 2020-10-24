@@ -10,8 +10,8 @@ const UserInfo = () => {
                 </div>
                 <div className = {ui.info}>
                     <p className = {ui.name}>Viacheslav Zhuravel</p>
-                    <p>Super FrontEnd developer</p>
-                    <p>React</p>
+                    <p>Super FrontEnd Developer</p>
+                    <p>Creator this piece of .... React</p>
                     <p>27 years old </p>
                     <p>Bielsko - Biala, 43-300 Poland</p>
                 </div>
