@@ -1,0 +1,27 @@
+.wrapper{
+    display:flex;
+    flex-grow: 1;
+    margin:10px;
+    margin-left: -30px;
+}
+.space {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    .space_messs{
+        height: calc(100vh - 300px);
+        overflow: auto;
+    }
+}
+.user_list{
+    min-width: 200px;
+    max-width: 200px;
+    margin-right: 10px;
+}
+.grov{
+    flex-grow: 1;
+}
+.input{
+    margin-top: 15px;
+}

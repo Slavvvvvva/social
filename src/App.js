@@ -4,22 +4,24 @@ import { Container, Row, Col } from 'reactstrap';
 import Header from './components/Header/header';
 import Nawigation from './components/Navigation/nawigation';
 import User from './components/User/user';
+import Chat from './components/Massedges/masseges';
 
 
 function App() {
   return (
-    <Container className ={s.body}  fluid={true}>
-    <Row>
-      <Col className ={s.head}><Header/></Col>
-    </Row>
-    <Row>
-     <Nawigation/>
-      <User/>
-    </Row>
-    <Row>
-      <Col className ={s.foot}>подвал</Col>
-    </Row>
-  </Container>
+      <Container  className ={s.body}>
+         <Row>
+            <Col className ={s.head}><Header/></Col>
+         </Row>
+         <Row className = {s.content}>
+            <Nawigation/>
+            <Chat/>
+            {/* <User/> */}
+          </Row>
+          <Row>
+             <Col className ={s.foot}>подвал</Col>
+          </Row>
+      </Container>
   );
 }
 
