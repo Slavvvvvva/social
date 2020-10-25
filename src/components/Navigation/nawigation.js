@@ -11,12 +11,12 @@ const Nawigation = () => {
   return (
     <Col className ={n.navig} xs="2">
       <ListGroup className ={n.list_groop} >
-      <ListGroupItem className={newClass} >Моя страница <Badge pill>2</Badge></ListGroupItem>
-      <ListGroupItem className={newClass}>Друзья <Badge pill>14</Badge></ListGroupItem>
-      <ListGroupItem className={newClass}>Сообщения <Badge pill>2</Badge></ListGroupItem>
-      <ListGroupItem className={newClass}>Новости <Badge pill>2</Badge></ListGroupItem>
-      <ListGroupItem className={last}></ListGroupItem>
-      <ListGroupItem className={newClass}>Настройки <Badge pill>1</Badge></ListGroupItem>
+        <ListGroupItem className={newClass} > <a href ="/myprofile" >Моя страница <Badge pill>1</Badge></a> </ListGroupItem>
+        <ListGroupItem className={newClass}> <a href ="/frends" >Друзья <Badge pill>2</Badge></a></ListGroupItem>
+        <ListGroupItem className={newClass}> <a href ="/meseges" >Сообщения <Badge pill>11</Badge></a> </ListGroupItem>
+        <ListGroupItem className={newClass}> <a href ="/news" >Новости <Badge pill>22</Badge></a></ListGroupItem>
+        <ListGroupItem className={last}></ListGroupItem>
+        <ListGroupItem className={newClass}> <a href ="/settings" >Настройки <Badge pill>1</Badge></a></ListGroupItem>
     </ListGroup>
     </Col>
   )

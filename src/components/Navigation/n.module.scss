@@ -3,7 +3,6 @@
     display: flex;
     max-width: 200px;
     min-width: 200px;
-
 }
 .list_groop{
     width: 300px;
@@ -13,4 +12,17 @@
 }
 .last{
     flex:1;
+}
+.list{
+    display: inline;
+    box-sizing: border-box;
+    padding:0;
+    width: 100%;
+    a {
+        display: block;
+        outline: none;
+        color: black;
+        text-decoration: none;
+        padding: 12px 20px;
+     }
 }
