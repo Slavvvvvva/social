@@ -9,7 +9,7 @@ import Chat from './components/Massedges/masseges';
 
 
 
-function App() {
+function App(props) {
    return (
       <BrowserRouter>
          <Container className={s.body}>
@@ -18,8 +18,8 @@ function App() {
             </Row>
             <Row className={s.content}>
                <Nawigation />
-               <Route path='/meseges' component={Chat} />
-               <Route path='/myprofile' component={User} />
+               <Route path='/meseges' render ={ () => <Chat dialogname  ={props.dialogname} meseges = {props.meseges} /> } />
+               <Route path='/myprofile' render={ () =>  <User posts ={props.posts} /> } />
             </Row>
             <Row>
                <Col className={s.foot}>подвал</Col>
