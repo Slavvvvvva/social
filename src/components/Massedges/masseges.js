@@ -23,6 +23,11 @@ const Chat = (props) => {
         )
     })
 
+    let TaickPost = React.createRef();
+
+    let AddMessege = () => alert(TaickPost.current.value)
+    
+
     return (
         <Col className={m.wrapper}>
             <ListGroup className={m.user_list}>
@@ -33,9 +38,9 @@ const Chat = (props) => {
                     {MyMessageContent}
                 </div>
                 <InputGroup className={m.input}>
-                    <Input />
+                    <input  ref = {TaickPost} />
                     <InputGroupAddon addonType="append">
-                        <Button color="secondary">Отправить</Button>
+                        <Button onClick = {AddMessege} color="secondary">Отправить</Button>
                     </InputGroupAddon>
                 </InputGroup>
 

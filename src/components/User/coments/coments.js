@@ -14,14 +14,18 @@ const Coments = (props) => {
         )
       })
 
+    let AddPost = () => alert(Textpost.current.value)
+    
+    let Textpost = React.createRef(); 
 
+    
     return (
         <div className = {c.comments}>
             <div className = {c.coment_add}>
-                <InputGroup>
-                    <Input />
+                <InputGroup >
+                    <input ref ={Textpost} />
                         <InputGroupAddon addonType="append">
-                        <Button color="secondary">Post</Button>
+                        <Button onClick = {AddPost} color="secondary">Post</Button>
                         </InputGroupAddon>
                 </InputGroup>
                  <br />
