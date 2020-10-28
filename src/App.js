@@ -18,8 +18,8 @@ function App(props) {
             </Row>
             <Row className={s.content}>
                <Nawigation />
-               <Route path='/meseges' render ={ () => <Chat dialogname  ={props.dialogname} meseges = {props.meseges} /> } />
-               <Route path='/myprofile' render={ () =>  <User posts ={props.posts} /> } />
+               <Route path='/meseges' render ={ () => <Chat dialogname  ={props.dialogname} meseges = {props.meseges} AddNewMessege = {props.AddNewMessege} /> } />
+               <Route path='/myprofile' render={ () =>  <User posts ={props.posts} AddNewPost ={props.AddNewPost} /> } />
             </Row>
             <Row>
                <Col className={s.foot}>подвал</Col>

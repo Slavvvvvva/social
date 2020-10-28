@@ -14,11 +14,10 @@ const Coments = (props) => {
         )
       })
 
-    let AddPost = () => alert(Textpost.current.value)
+    let AddPost = () => props.AddNewPost(Textpost.current.value);
     
     let Textpost = React.createRef(); 
 
-    
     return (
         <div className = {c.comments}>
             <div className = {c.coment_add}>

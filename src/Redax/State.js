@@ -1,4 +1,4 @@
-
+import RenderEntireTree from "../render"
 let state  = {
     userPage:{
         PostsData : [
@@ -34,4 +34,16 @@ let state  = {
           ]
     }
 }
+
+export let AddNewPost = (mes) => {
+  let newData = { id: "6", massege: mes, counter: 5};
+  state.userPage.PostsData.push(newData)
+  RenderEntireTree(state)
+}
+export let AddNewMessege = (text) => {
+  let newData = { id: "1", text: text };
+  state.mesegesPage.MasegesData.push(newData)
+  RenderEntireTree(state)
+}
+
 export default state;

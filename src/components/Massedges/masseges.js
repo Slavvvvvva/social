@@ -25,7 +25,7 @@ const Chat = (props) => {
 
     let TaickPost = React.createRef();
 
-    let AddMessege = () => alert(TaickPost.current.value)
+    let AddMessege = () => props.AddNewMessege(TaickPost.current.value)
     
 
     return (
@@ -43,7 +43,6 @@ const Chat = (props) => {
                         <Button onClick = {AddMessege} color="secondary">Отправить</Button>
                     </InputGroupAddon>
                 </InputGroup>
-
             </div>
         </Col>
     )
