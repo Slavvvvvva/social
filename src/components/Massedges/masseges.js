@@ -9,15 +9,15 @@ import DialogItem from './dialog-item/dialog-item.js';
 
 
 const Chat = (props) => {
-
-
-    let DialogName = props.dialogname.map((item) => {
+  
+    debugger
+    let DialogName =props.dialogname.mesegesPage.DialogNameData.map((item) => {
         return (
             <DialogItem dialog_name={item.name} massege_counter={item.counter} id={item.id} />
         )
     });
 
-    let MyMessageContent = props.meseges.map((item) => {
+    let MyMessageContent = props.meseges.mesegesPage.MasegesData.map((item) => {
         return (
             (item.id === 1) ? <MyMessag texxt={item.text} /> : <OponentMesage texxt={item.text} />
         )

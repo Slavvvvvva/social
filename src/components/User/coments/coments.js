@@ -8,7 +8,7 @@ import ComentItem from './coment-item/coment-item.js';
 const Coments = (props) => {
 
 
-    let Posts = props.wall.map( (item) => {
+    let Posts = props.wall.userPage.PostsData.map( (item) => {
         return(
             <ComentItem comentText = {item.massege} likeCounter = {item.likeCounter}/>
         )
