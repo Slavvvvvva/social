@@ -9,7 +9,7 @@ const User = (props) => {
     return (
         <Col className = {u.user}>
             <UserInfo/>
-            <Coments wall = {props.posts} AddNewPost={props.AddNewPost}/> 
+            <Coments wall = {props.posts} Dispatch = {props.Dispatch}/> 
         </Col>
     )
 }  

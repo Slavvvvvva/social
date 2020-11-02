@@ -1,6 +1,6 @@
 
 let store = {
-  _state  : {
+  _state: {
     userPage: {
       PostsData: [
         { id: 1, massege: "Я начал учить реакт и я его закончу", likeCounter: 500 },
@@ -38,22 +38,23 @@ let store = {
   getState() {
     return this._state
   },
-  AddNewPost(mes) {
-    let newData = { id: "6", massege: mes, counter: 5 };
-    this._state.userPage.PostsData.push(newData)
-    this._RenderEntireTree(this._state)
-  },
-  AddNewMessege(text) {
-    let newData = { id: "1", text: text };
-    this._state.mesegesPage.MasegesData.push(newData)
-    this._RenderEntireTree(this._state)
-  },
   _RenderEntireTree() {
 
   },
   Suscribe(observer) {
     this._RenderEntireTree = observer;
+  },
+  Dispatch(action) {
+    if (action.type === 'ADD_NEW_POST') {
+      let newData = { id: "6", massege: action.post, counter: 5 };
+      this._state.userPage.PostsData.push(newData)
+      this._RenderEntireTree(this._state)
+    } else if (action.type === 'ADD_NEW_MESSEGE') {
+      let newData = { id: "1", text: action.text };
+      this._state.mesegesPage.MasegesData.push(newData)
+      this._RenderEntireTree(this._state)
+    } 
   }
 }
+export { store };
 
-export {store};

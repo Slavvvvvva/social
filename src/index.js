@@ -9,7 +9,7 @@ let RenderEntireTree = () => {
   return(
     ReactDOM.render(
       <React.StrictMode>
-        <App posts= {store.getState()} dialogname = {store.getState()} meseges ={store.getState()} AddNewPost ={store.AddNewPost.bind(store)} AddNewMessege = {store.AddNewMessege.bind(store)} />
+        <App posts= {store.getState()} dialogname = {store.getState()} meseges ={store.getState()} Dispatch = {store.Dispatch.bind(store)} />
       </React.StrictMode>,
       document.getElementById('root')
     )

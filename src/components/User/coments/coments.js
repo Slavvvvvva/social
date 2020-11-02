@@ -8,28 +8,35 @@ import ComentItem from './coment-item/coment-item.js';
 const Coments = (props) => {
 
 
-    let Posts = props.wall.userPage.PostsData.map( (item) => {
-        return(
-            <ComentItem comentText = {item.massege} likeCounter = {item.likeCounter}/>
+    let Posts = props.wall.userPage.PostsData.map((item) => {
+        return (
+            <ComentItem comentText={item.massege} likeCounter={item.likeCounter} />
         )
-      })
+    })
 
-    let AddPost = () => props.AddNewPost(Textpost.current.value);
-    
-    let Textpost = React.createRef(); 
+    let AddPost = () => {
+        let action = {
+            type: 'ADD_NEW_POST',
+            post: Textpost.current.value
+        }
+        props.Dispatch(action)
+        Textpost.current.value = ""
+    }
+
+    let Textpost = React.createRef();
 
     return (
-        <div className = {c.comments}>
-            <div className = {c.coment_add}>
+        <div className={c.comments}>
+            <div className={c.coment_add}>
                 <InputGroup >
-                    <input ref ={Textpost} />
-                        <InputGroupAddon addonType="append">
-                        <Button onClick = {AddPost} color="secondary">Post</Button>
-                        </InputGroupAddon>
+                    <input ref={Textpost} />
+                    <InputGroupAddon addonType="append">
+                        <Button onClick={AddPost} color="secondary">Post</Button>
+                    </InputGroupAddon>
                 </InputGroup>
-                 <br />
+                <br />
             </div>
-            {Posts}    
+            {Posts}
             <br />
             <br />
         </div>

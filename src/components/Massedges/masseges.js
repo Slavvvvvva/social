@@ -9,9 +9,9 @@ import DialogItem from './dialog-item/dialog-item.js';
 
 
 const Chat = (props) => {
-  
-    debugger
-    let DialogName =props.dialogname.mesegesPage.DialogNameData.map((item) => {
+
+   
+    let DialogName = props.dialogname.mesegesPage.DialogNameData.map((item) => {
         return (
             <DialogItem dialog_name={item.name} massege_counter={item.counter} id={item.id} />
         )
@@ -24,9 +24,17 @@ const Chat = (props) => {
     })
 
     let TaickPost = React.createRef();
-
-    let AddMessege = () => props.AddNewMessege(TaickPost.current.value)
     
+
+    let AddMessege = () => {
+        let action = {
+            type: 'ADD_NEW_MESSEGE',
+            text: TaickPost.current.value
+        }
+        props.Dispatch(action)
+        TaickPost.current.value = ""
+    }
+
 
     return (
         <Col className={m.wrapper}>
@@ -38,9 +46,9 @@ const Chat = (props) => {
                     {MyMessageContent}
                 </div>
                 <InputGroup className={m.input}>
-                    <input  ref = {TaickPost} />
+                    <input ref={TaickPost} />
                     <InputGroupAddon addonType="append">
-                        <Button onClick = {AddMessege} color="secondary">Отправить</Button>
+                        <Button onClick={AddMessege} color="secondary">Отправить</Button>
                     </InputGroupAddon>
                 </InputGroup>
             </div>

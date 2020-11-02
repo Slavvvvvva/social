@@ -1,7 +1,7 @@
 import React from 'react';
-import s from './App.module.scss';
 import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter, Route } from 'react-router-dom';
+import s from './App.module.scss';
 import Header from './components/Header/header';
 import Nawigation from './components/Navigation/nawigation';
 import User from './components/User/user';
@@ -12,19 +12,19 @@ import Chat from './components/Massedges/masseges';
 function App(props) {
    return (
       <BrowserRouter>
-         <Container className={s.body}>
+         <div className={s.body}>
             <Row>
                <Col className={s.head}><Header /></Col>
             </Row>
             <Row className={s.content}>
                <Nawigation />
-               <Route path='/meseges' render ={ () => <Chat dialogname  ={props.dialogname} meseges = {props.meseges} AddNewMessege = {props.AddNewMessege} /> } />
-               <Route path='/myprofile' render={ () =>  <User posts ={props.posts} AddNewPost ={props.AddNewPost} /> } />
+               <Route path='/meseges' render ={ () => <Chat dialogname  ={props.dialogname} meseges = {props.meseges} Dispatch = {props.Dispatch} /> } />
+               <Route path='/myprofile' render={ () =>  <User posts ={props.posts} Dispatch = {props.Dispatch} /> } />
             </Row>
             <Row>
                <Col className={s.foot}>подвал</Col>
             </Row>
-         </Container>
+         </div>
       </BrowserRouter>
 
    );
