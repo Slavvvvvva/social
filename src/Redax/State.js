@@ -53,8 +53,30 @@ let store = {
       let newData = { id: "1", text: action.text };
       this._state.mesegesPage.MasegesData.push(newData)
       this._RenderEntireTree(this._state)
-    } 
+    }
   }
 }
-export { store };
+
+let ADD_NEW_MESSAGE = 'ADD_NEW_MESSEGE'
+let AddMessegeActionCreator = (text) => {
+  return (
+    {
+      type: ADD_NEW_MESSAGE,
+      text: text
+    }
+  )
+}
+
+let ADD_NEW_POST = 'ADD_NEW_POST'
+let AddPostActionCreator = (text) => {
+  return (
+    {
+      type: ADD_NEW_POST,
+      post: text
+    }
+  )
+}
+export { AddPostActionCreator }
+export { AddMessegeActionCreator }
+export { store }
 

@@ -6,11 +6,12 @@ import m from './m.module.scss';
 import MyMessag from './my-meseges/my-meseges';
 import OponentMesage from './oponent-meseges/oponent-meseges';
 import DialogItem from './dialog-item/dialog-item.js';
+import { AddMessegeActionCreator } from '../../Redax/State';
 
 
 const Chat = (props) => {
 
-   
+
     let DialogName = props.dialogname.mesegesPage.DialogNameData.map((item) => {
         return (
             <DialogItem dialog_name={item.name} massege_counter={item.counter} id={item.id} />
@@ -24,13 +25,11 @@ const Chat = (props) => {
     })
 
     let TaickPost = React.createRef();
-    
+
+
 
     let AddMessege = () => {
-        let action = {
-            type: 'ADD_NEW_MESSEGE',
-            text: TaickPost.current.value
-        }
+        let action = AddMessegeActionCreator(TaickPost.current.value)
         props.Dispatch(action)
         TaickPost.current.value = ""
     }

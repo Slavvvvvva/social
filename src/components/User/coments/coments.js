@@ -2,6 +2,7 @@ import React from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import c from './coments.module.scss';
 import ComentItem from './coment-item/coment-item.js';
+import { AddPostActionCreator } from '../../../Redax/State';
 
 
 
@@ -15,10 +16,7 @@ const Coments = (props) => {
     })
 
     let AddPost = () => {
-        let action = {
-            type: 'ADD_NEW_POST',
-            post: Textpost.current.value
-        }
+        let action = AddPostActionCreator(Textpost.current.value)
         props.Dispatch(action)
         Textpost.current.value = ""
     }
