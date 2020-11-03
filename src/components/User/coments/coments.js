@@ -2,7 +2,7 @@ import React from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import c from './coments.module.scss';
 import ComentItem from './coment-item/coment-item.js';
-import { AddPostActionCreator } from '../../../Redax/State';
+import { AddPostActionCreator } from '../../../Redax/User-page-reduser';
 
 
 

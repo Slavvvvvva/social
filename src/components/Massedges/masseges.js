@@ -6,7 +6,7 @@ import m from './m.module.scss';
 import MyMessag from './my-meseges/my-meseges';
 import OponentMesage from './oponent-meseges/oponent-meseges';
 import DialogItem from './dialog-item/dialog-item.js';
-import { AddMessegeActionCreator } from '../../Redax/State';
+import { AddMessegeActionCreator } from '../../Redax/Meseges-page-reduser';
 
 
 const Chat = (props) => {

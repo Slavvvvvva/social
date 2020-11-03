@@ -1,3 +1,5 @@
+import MesegesPageReduser from "./Meseges-page-reduser";
+import UserPageReduser from "./User-page-reduser";
 
 let store = {
   _state: {
@@ -45,38 +47,11 @@ let store = {
     this._RenderEntireTree = observer;
   },
   Dispatch(action) {
-    if (action.type === 'ADD_NEW_POST') {
-      let newData = { id: "6", massege: action.post, counter: 5 };
-      this._state.userPage.PostsData.push(newData)
-      this._RenderEntireTree(this._state)
-    } else if (action.type === 'ADD_NEW_MESSEGE') {
-      let newData = { id: "1", text: action.text };
-      this._state.mesegesPage.MasegesData.push(newData)
-      this._RenderEntireTree(this._state)
-    }
+    this._state.userPage.PostsData = UserPageReduser(this._state.userPage.PostsData, action)
+    this._state.mesegesPage.MasegesData = MesegesPageReduser(this._state.mesegesPage.MasegesData, action)
+    this._RenderEntireTree(this._state)
   }
 }
 
-let ADD_NEW_MESSAGE = 'ADD_NEW_MESSEGE'
-let AddMessegeActionCreator = (text) => {
-  return (
-    {
-      type: ADD_NEW_MESSAGE,
-      text: text
-    }
-  )
-}
-
-let ADD_NEW_POST = 'ADD_NEW_POST'
-let AddPostActionCreator = (text) => {
-  return (
-    {
-      type: ADD_NEW_POST,
-      post: text
-    }
-  )
-}
-export { AddPostActionCreator }
-export { AddMessegeActionCreator }
 export { store }
 
