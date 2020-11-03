@@ -1,40 +1,13 @@
 import React from 'react';
 import { ListGroup } from 'reactstrap';
-import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Button } from 'reactstrap';
 import { Col } from 'reactstrap';
-import m from './m.module.scss';
-import MyMessag from './my-meseges/my-meseges';
-import OponentMesage from './oponent-meseges/oponent-meseges';
-import DialogItem from './dialog-item/dialog-item.js';
-import { AddMessegeActionCreator } from '../../Redax/Meseges-page-reduser';
-
+import m from './m.module.scss'
 
 const Chat = (props) => {
-
-
-    let DialogName = props.dialogname.MesegesPage.DialogNameData.map((item) => {
-        return (
-            <DialogItem dialog_name={item.name} massege_counter={item.counter} id={item.id} />
-        )
-    });
-
-    let MyMessageContent = props.meseges.MesegesPage.MasegesData.map((item) => {
-        return (
-            (item.id === 1) ? <MyMessag texxt={item.text} /> : <OponentMesage texxt={item.text} />
-        )
-    })
-
     let TaickPost = React.createRef();
-
-
-
-    let AddMessege = () => {
-        let action = AddMessegeActionCreator(TaickPost.current.value)
-        props.Dispatch(action)
-        TaickPost.current.value = ""
-    }
-
-
+    let DialogName = () => props.ContainerDialogName
+    let AddMessege = () => props.ContainerAddMessege(TaickPost)
     return (
         <Col className={m.wrapper}>
             <ListGroup className={m.user_list}>
@@ -42,7 +15,7 @@ const Chat = (props) => {
             </ListGroup>
             <div className={m.space}>
                 <div className={m.space_messs}>
-                    {MyMessageContent}
+                    {props.MyMessageContent}
                 </div>
                 <InputGroup className={m.input}>
                     <input ref={TaickPost} />
