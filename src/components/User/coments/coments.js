@@ -8,8 +8,8 @@ import { AddPostActionCreator } from '../../../Redax/User-page-reduser';
 
 const Coments = (props) => {
 
-
-    let Posts = props.wall.userPage.PostsData.map((item) => {
+    debugger
+    let Posts = props.wall.UserPage.PostsData.map((item) => {
         return (
             <ComentItem comentText={item.massege} likeCounter={item.likeCounter} />
         )

@@ -12,13 +12,13 @@ import { AddMessegeActionCreator } from '../../Redax/Meseges-page-reduser';
 const Chat = (props) => {
 
 
-    let DialogName = props.dialogname.mesegesPage.DialogNameData.map((item) => {
+    let DialogName = props.dialogname.MesegesPage.DialogNameData.map((item) => {
         return (
             <DialogItem dialog_name={item.name} massege_counter={item.counter} id={item.id} />
         )
     });
 
-    let MyMessageContent = props.meseges.mesegesPage.MasegesData.map((item) => {
+    let MyMessageContent = props.meseges.MesegesPage.MasegesData.map((item) => {
         return (
             (item.id === 1) ? <MyMessag texxt={item.text} /> : <OponentMesage texxt={item.text} />
         )

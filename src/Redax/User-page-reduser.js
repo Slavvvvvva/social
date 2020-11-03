@@ -8,10 +8,21 @@ let AddPostActionCreator = (text) => {
   )
 }
 
-let UserPageReduser = (state, action) => {
+let initialState = {
+  PostsData: [
+    { id: 1, massege: "Я начал учить реакт и я его закончу", likeCounter: 500 },
+    { id: 2, massege: "Розобрался с пропсами", likeCounter: 300 },
+    { id: 3, massege: "Начну скгодня делать страницу с сообщениями", likeCounter: 400 },
+    { id: 4, massege: "Научился переключатся между страницами", likeCounter: 500 },
+    { id: 5, massege: "Я сделал страницу с сообщениями", likeCounter: 550 },
+  ]
+}
+
+let UserPageReduser = (state = initialState, action) => {
     if (action.type === 'ADD_NEW_POST') {
         let newData = { id: "6", massege: action.post, counter: 5 }
-        state.push(newData)
+        debugger
+        state.PostsData.push(newData)
       } 
     return state
 }
