@@ -6,12 +6,11 @@ import m from './m.module.scss'
 
 const Chat = (props) => {
     let TaickPost = React.createRef();
-    let DialogName = () => props.ContainerDialogName
     let AddMessege = () => props.ContainerAddMessege(TaickPost)
     return (
         <Col className={m.wrapper}>
             <ListGroup className={m.user_list}>
-                {DialogName}
+                {props.ContainerDialogName}
             </ListGroup>
             <div className={m.space}>
                 <div className={m.space_messs}>
