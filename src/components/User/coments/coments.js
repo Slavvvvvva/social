@@ -1,28 +1,14 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Button, } from 'reactstrap';
 import c from './coments.module.scss';
-import ComentItem from './coment-item/coment-item.js';
-import { AddPostActionCreator } from '../../../Redax/User-page-reduser';
+
 
 
 
 const Coments = (props) => {
 
-    debugger
-    let Posts = props.wall.UserPage.PostsData.map((item) => {
-        return (
-            <ComentItem comentText={item.massege} likeCounter={item.likeCounter} />
-        )
-    })
-
-    let AddPost = () => {
-        let action = AddPostActionCreator(Textpost.current.value)
-        props.Dispatch(action)
-        Textpost.current.value = ""
-    }
-
     let Textpost = React.createRef();
-
+    let AddPost = () => props.AddPostContainer(Textpost)
     return (
         <div className={c.comments}>
             <div className={c.coment_add}>
@@ -34,7 +20,7 @@ const Coments = (props) => {
                 </InputGroup>
                 <br />
             </div>
-            {Posts}
+            {props.PostsContainer}
             <br />
             <br />
         </div>

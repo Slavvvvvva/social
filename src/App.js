@@ -17,7 +17,7 @@ function App(props) {
             <Row className={s.content}>
                <Nawigation />
                <Route path='/meseges' render ={ () => <ChatContainer store = {props.store}  /> } />
-               <Route path='/myprofile' render={ () =>  <User posts ={props.posts} Dispatch = {props.Dispatch} /> } />
+               <Route path='/myprofile' render={ () =>  <User store = {props.store} /> } />
             </Row>
             <Row>
                <Col className={s.foot}>подвал</Col>
