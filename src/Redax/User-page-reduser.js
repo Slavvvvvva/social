@@ -21,8 +21,9 @@ let initialState = {
 let UserPageReduser = (state = initialState, action) => {
     if (action.type === 'ADD_NEW_POST') {
         let newData = { id: "6", massege: action.post, counter: 5 }
-        debugger
-        state.PostsData.push(newData)
+        let stateCopy = {...state};
+        stateCopy.PostsData = { ...state.PostsData};
+        stateCopy.PostsData.push(newData)
       } 
     return state
 }

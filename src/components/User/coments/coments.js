@@ -1,12 +1,21 @@
 import React from 'react';
 import { InputGroup, InputGroupAddon, Button, } from 'reactstrap';
 import c from './coments.module.scss';
+import ComentItem from './coment-item/coment-item.js';
 
 
 
 
 const Coments = (props) => {
-
+debugger
+    const Posts = () => {
+        props.PostsContainer.map((item) => {
+                return (
+                    <ComentItem comentText={item.massege} likeCounter={item.likeCounter} />
+                )
+            })
+    }
+    debugger
     let Textpost = React.createRef();
     let AddPost = () => props.AddPostContainer(Textpost)
     return (
@@ -20,7 +29,7 @@ const Coments = (props) => {
                 </InputGroup>
                 <br />
             </div>
-            {props.PostsContainer}
+            {Posts}
             <br />
             <br />
         </div>
