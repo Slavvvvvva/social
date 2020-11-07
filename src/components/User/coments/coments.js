@@ -3,21 +3,16 @@ import { InputGroup, InputGroupAddon, Button, } from 'reactstrap';
 import c from './coments.module.scss';
 import ComentItem from './coment-item/coment-item.js';
 
-
-
-
 const Coments = (props) => {
-debugger
-    const Posts = () => {
-        props.PostsContainer.map((item) => {
+   
+    const Posts = props.PostsContainer.map((item) => {
                 return (
                     <ComentItem comentText={item.massege} likeCounter={item.likeCounter} />
                 )
             })
-    }
-    debugger
-    let Textpost = React.createRef();
-    let AddPost = () => props.AddPostContainer(Textpost)
+
+    const Textpost = React.createRef();
+    const AddPost = () => props.AddPostContainer(Textpost)
     return (
         <div className={c.comments}>
             <div className={c.coment_add}>

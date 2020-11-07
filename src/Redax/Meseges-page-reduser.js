@@ -36,8 +36,10 @@ let MesegesPageReduser = (state = initialState, action) =>{
     if (action.type === 'ADD_NEW_MESSEGE') {
         debugger
         let newData = { id: "1", text: action.text };
-        
-        state.MasegesData.push(newData)
+        let stateCopy = {...state}
+        stateCopy.MasegesData = [...state.MasegesData]
+        stateCopy.MasegesData.push(newData)
+        return stateCopy
       }
     return state
 }
