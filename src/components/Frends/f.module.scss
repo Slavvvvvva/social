@@ -1,0 +1,23 @@
+.avatar{
+    width: 100px;
+    height: auto;
+    border-radius: 100%;
+    margin: 10px;
+}
+.frends{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.frends_logo{
+    display: flex;
+    flex-direction: column;
+}
+.frends_description{
+    margin: 10px;
+    p,h4{
+        text-align: center;
+    }
+    
+}

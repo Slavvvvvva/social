@@ -1,6 +1,5 @@
 import React from 'react'
 import Chat from './masseges'
-
 import { AddMessegeActionCreator } from '../../Redax/Meseges-page-reduser';
 import { connect } from 'react-redux';
 

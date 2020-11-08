@@ -6,6 +6,7 @@ import Header from './components/Header/header';
 import Nawigation from './components/Navigation/nawigation';
 import User from './components/User/user';
 import ChatContainer from './components/Massedges/messeges.container'
+import FrendsContainer from './components/Frends/frendes-container'
 
 function App(props) {
    return (
@@ -18,6 +19,7 @@ function App(props) {
                <Nawigation />
                <Route path='/meseges' render ={ () => <ChatContainer store = {props.store}  /> } />
                <Route path='/myprofile' render={ () =>  <User store = {props.store} /> } />
+               <Route path='/frends' render={ () =>  <FrendsContainer store = {props.store} /> } />
             </Row>
             <Row>
                <Col className={s.foot}>подвал</Col>
