@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { togleFolowAC } from '../../Redax/Frends-page-reduser';
 import { setUsersAC} from '../../Redax/Frends-page-reduser'
-import Frends from './frends'
+import Frends from './frendscopy'
 
 let mapStateToProps = (state) =>{
     return {
