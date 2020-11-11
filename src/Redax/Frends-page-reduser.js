@@ -7,7 +7,17 @@ let initialState = {
         {id:3, active:false},
         {id:4, active:false},
         {id:5, active:false},
-    ]
+    ],
+    isLoader: false
+}
+const TOGLE_SHOW_LOADER = "TOGLE_SHOW_LOADER"
+let togleShowLoaderAC = (showed) => {
+    return(
+        {
+            type: TOGLE_SHOW_LOADER,
+            showed: showed
+        }
+    )
 }
 
 const TOGLE_PAGE = "TOGLE_PAGE"
@@ -58,6 +68,7 @@ let FrendsPageReduser = (state = initialState, action) => {
                 return {...item, active: false}
             }
         )}
+        case TOGLE_SHOW_LOADER : return {...state, isLoader: action.showed }
         default : return state
     }
 }
@@ -67,3 +78,4 @@ let FrendsPageReduser = (state = initialState, action) => {
  export {togleFolowAC}
  export {setUsersAC}
  export {toglePageAC}
+ export {togleShowLoaderAC}

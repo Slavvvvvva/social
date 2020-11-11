@@ -3,18 +3,20 @@ import { Button } from 'reactstrap'
 import avatar from '../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import f from './f.module.scss'
 import * as axios from 'axios'
+import Loader from '../Loader/loader';
 
 
 class Frends extends React.Component{
 
     componentDidMount() {
-        
+        this.props.ContainerToggleLoader(true)
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
         .then(responce => {
             console.log(responce)
             this.props.ContainerSetUsers(responce.data.items)
+            this.props.ContainerToggleLoader(false)
         })
-    }
+    }   
 
     FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
         return (
@@ -35,10 +37,12 @@ class Frends extends React.Component{
     
     ShowUsers = (id) => {
         this.props.ConteinerTogglePage(id)
+        this.props.ContainerToggleLoader(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${id}`)
         .then(responce => {
             console.log(responce)
             this.props.ContainerSetUsers(responce.data.items)
+            this.props.ContainerToggleLoader(false)
         })
     }
     ChaingePageButtons = () => this.props.ContainerActivePage.map( (item) => {
@@ -52,6 +56,7 @@ class Frends extends React.Component{
                 <div className={f.show_users_wrapper}>
                     {this.ChaingePageButtons()}
                 </div>
+                {this.props.ContainerShowLoader? <div className = {f.loader}> <Loader /> </div> : null}           
                 {this.FrendItem()}
             </div>
         )
