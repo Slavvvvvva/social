@@ -11,19 +11,9 @@ class Frends extends React.Component{
         
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
         .then(responce => {
+            console.log(responce)
             this.props.ContainerSetUsers(responce.data.items)
         })
-    }
-
-    ShowUsers = () => {
-        if (this.props.ConteinerFrends.FrendsPage.length === 0) {
-
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(responce => {
-                    console.log(responce)
-                    this.props.ContainerSetUsers(responce.data.items)
-                })
-            }
     }
 
     FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
@@ -42,15 +32,26 @@ class Frends extends React.Component{
             </div>
         )
     })
-
-
+    
+    ShowUsers = (id) => {
+        this.props.ConteinerTogglePage(id)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${id}`)
+        .then(responce => {
+            console.log(responce)
+            this.props.ContainerSetUsers(responce.data.items)
+        })
+    }
+    ChaingePageButtons = () => this.props.ContainerActivePage.map( (item) => {
+        return (
+        <Button  outline= {item.active? false : true } color="info" onClick={()=> this.ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
+        )
+    })
     render() {
         return (
             <div className = {f.frends_wrapper}>
                 <div className={f.show_users_wrapper}>
-                    <Button outline color="info" onClick={this.ShowUsers} className={f.show_users} >Показать пользователей</Button>
+                    {this.ChaingePageButtons()}
                 </div>
-                
                 {this.FrendItem()}
             </div>
         )

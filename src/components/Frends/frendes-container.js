@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import { togleFolowAC } from '../../Redax/Frends-page-reduser';
+import { togleFolowAC, toglePageAC } from '../../Redax/Frends-page-reduser';
 import { setUsersAC} from '../../Redax/Frends-page-reduser'
 import Frends from './frendscopy'
 
 let mapStateToProps = (state) =>{
     return {
-        ConteinerFrends: state.FrendsPage
+        ConteinerFrends: state.FrendsPage,
+        ContainerActivePage :state.FrendsPage.ActivePage
     }
 }
 
@@ -16,6 +17,9 @@ let mapDispatchToProps = (dispatch) =>{
         },
         ContainerSetUsers: (users)=> {
             dispatch(setUsersAC(users))
+        },
+        ConteinerTogglePage: (id) => {
+            dispatch(toglePageAC(id))
         }
     }
 }

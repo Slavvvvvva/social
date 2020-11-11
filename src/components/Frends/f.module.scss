@@ -24,9 +24,11 @@
 .show_users_wrapper{
     display: flex;
     width: auto;
+    justify-content: start;
     .show_users{
         margin: 0 auto;
         margin-top: 20px;
+        
 }
     }
 .frends_wrapper{
