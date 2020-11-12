@@ -6,10 +6,11 @@ import UserInfo from './user-info/user-info';
 
 
 const User = (props) => {
+    debugger
     return (
         <Col className = {u.user}>
-            <UserInfo/>
-            <ComentsContainer store = {props.store}/> 
+            <UserInfo ConteinerFrends = {props.ConteinerFrends}/>
+            <ComentsContainer /> 
         </Col>
     )
 }  
