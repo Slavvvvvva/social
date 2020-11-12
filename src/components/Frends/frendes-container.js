@@ -11,7 +11,7 @@ let mapStateToProps = (state) =>{
     }
 }
 
-let mapDispatchToProps = (dispatch) =>{
+/* let mapDispatchToProps = (dispatch) =>{
     return{
         ContainerToggleFollou: (id) => {
             dispatch(togleFolowAC(id))
@@ -26,7 +26,7 @@ let mapDispatchToProps = (dispatch) =>{
             dispatch(togleShowLoaderAC(showed))
         }
     }
-}
+} */
 
-const FrendsContainer = connect(mapStateToProps,mapDispatchToProps)(Frends)
+const FrendsContainer = connect(mapStateToProps,{togleFolowAC,setUsersAC,toglePageAC,togleShowLoaderAC})(Frends)
 export default FrendsContainer

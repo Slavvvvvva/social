@@ -9,12 +9,12 @@ import Loader from '../Loader/loader';
 class Frends extends React.Component{
 
     componentDidMount() {
-        this.props.ContainerToggleLoader(true)
+        this.props.togleShowLoaderAC(true)
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
         .then(responce => {
             console.log(responce)
-            this.props.ContainerSetUsers(responce.data.items)
-            this.props.ContainerToggleLoader(false)
+            this.props.setUsersAC(responce.data.items)
+            this.props.togleShowLoaderAC(false)
         })
     }   
 
@@ -23,7 +23,7 @@ class Frends extends React.Component{
             <div className={f.frends}>
                 <div className={f.frends_logo}>
                     <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
-                    <Button onClick={() => { this.props.ContainerToggleFollou(item.id) }} color={item.followed ? "primary" : "danger"}>{item.followed ? "follow" : "unfollow"}</Button>
+                    <Button onClick={() => { this.props.togleFolowAC(item.id) }} color={item.followed ? "primary" : "danger"}>{item.followed ? "follow" : "unfollow"}</Button>
                 </div>
                 <div className={f.frends_description}>
                     <h4>{item.name}</h4>
@@ -36,13 +36,13 @@ class Frends extends React.Component{
     })
     
     ShowUsers = (id) => {
-        this.props.ConteinerTogglePage(id)
-        this.props.ContainerToggleLoader(true)
+        this.props.toglePageAC(id)
+        this.props.togleShowLoaderAC(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${id}`)
         .then(responce => {
             console.log(responce)
-            this.props.ContainerSetUsers(responce.data.items)
-            this.props.ContainerToggleLoader(false)
+            this.props.setUsersAC(responce.data.items)
+            this.props.togleShowLoaderAC(false)
         })
     }
     ChaingePageButtons = () => this.props.ContainerActivePage.map( (item) => {
