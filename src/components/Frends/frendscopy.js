@@ -20,11 +20,12 @@ class Frends extends React.Component {
     }
 
     FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
+        let link = "/myprofile/"+item.id
         return (
             <div className={f.frends}>
                 <div className={f.frends_logo}>
-                    <NavLink to ="/myprofile/2">
-                        <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
+                    <NavLink to = {link} >
+                        <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar"/>
                     </NavLink>
 
                     <Button onClick={() => { this.props.togleFolowAC(item.id) }} color={item.followed ? "primary" : "danger"}>{item.followed ? "follow" : "unfollow"}</Button>

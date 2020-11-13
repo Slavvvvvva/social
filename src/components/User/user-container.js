@@ -1,22 +1,25 @@
-import React from 'react';
+import React from 'react'
 import * as axios from 'axios'
-import User from './user';
+import User from './user'
 import { connect } from 'react-redux';
 import {setUsersPageAC} from '../../Redax/User-page-reduser'
+import { withRouter } from 'react-router-dom'
 
 class UserContainer  extends React.Component{
     componentDidMount() {
-        debugger
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/2')
+        let userId = this.props.match.params.userId
+        if(!this.props.match.params.userId){
+            userId = 2
+
+        }
+        axios.get('https://social-network.samuraijs.com/api/1.0/profile/'+userId)
             .then(responce => {
-                debugger
                 console.log(responce)
                 this.props.setUsersPageAC(responce.data)
             })   
     }
     
     render() {
-        debugger
         return(
             <User {...this.props} />
         )
@@ -29,6 +32,6 @@ let mapStateToProps = (state) => {
         ContainerShowLoader: state.FrendsPage.isLoader
     }
 }
-
-export default connect(mapStateToProps,{setUsersPageAC})(UserContainer)
+let UrlDataUserContainer =  withRouter(UserContainer)
+export default connect(mapStateToProps,{setUsersPageAC})(UrlDataUserContainer)
 

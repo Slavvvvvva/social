@@ -4,7 +4,6 @@ import avatar from '../../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import Loader from '../../Loader/loader';
 
 const UserInfo = (props) => {
-    debugger
     if(!props.ConteinerFrends){
         return(
             <Loader/>

@@ -18,7 +18,7 @@ function App(props) {
             <Row className={s.content}>
                <Nawigation />
                <Route path='/meseges' render ={ () => <ChatContainer store = {props.store}  /> } />
-               <Route path='/myprofile' render={ () =>  <UserContainer store = {props.store} /> } />
+               <Route path='/myprofile/:userId?' render={ () =>  <UserContainer store = {props.store} /> } />
                <Route path='/frends' render={ () =>  <FrendsContainer store = {props.store} /> } />
             </Row>
             <Row>
