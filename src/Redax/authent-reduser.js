@@ -1,5 +1,5 @@
 let initialState = {
-    Id: null,
+    id: null,
     email: null,
     login: null,
     isAuth: false
@@ -16,7 +16,7 @@ let initialState = {
 let AuthPageReduser = (state = initialState, action) => {
     switch(action.type) {
         
-        case SET_USER_DATA :  return {...state, ...action.authData }
+        case SET_USER_DATA : return {...state, ...action.authData, isAuth: true }
         default : return state
     }
 }

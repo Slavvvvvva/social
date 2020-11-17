@@ -11,15 +11,15 @@ class HeaderContainer extends React.Component{
         debugger
         axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {withCredentials: true}) // добавляется если  нужно отарвыить вместе с соосе
         .then(responce => {
-            debugger
-            this.props.authUserDataAC(responce.data.data.login)
+            if (responce.data.resultCode === 0)
+            this.props.authUserDataAC(responce.data.data)
         }) 
     }
     render() {
         return (
             <>
             <Header {...this.props} />
-            <p> fkdjfkd</p>
+            
             </>
         )
     }

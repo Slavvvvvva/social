@@ -6,7 +6,8 @@ let Header = (props) =>{
   debugger
     return (
         <>
-          <img className = {h.logo} src ={logo} alt="logo company"/>
+         {props.ConteinerAuthUserData.isAuth? <p>My page</p>  : <p>не залогирован</p> } 
+         <img className = {h.logo} src ={logo} alt="logo company"/>
          
         </>
     )
