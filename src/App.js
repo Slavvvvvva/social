@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { BrowserRouter, Route } from 'react-router-dom';
 import s from './App.module.scss';
-import Header from './components/Header/header';
+import HeaderContainer from './components/Header/headerContainer';
 import Nawigation from './components/Navigation/nawigation';
 import UserContainer from './components/User/user-container';
 import ChatContainer from './components/Massedges/messeges.container'
@@ -13,7 +13,7 @@ function App(props) {
       <BrowserRouter>
          <div className={s.body}>
             <Row>
-               <Col className={s.head}><Header /></Col>
+               <Col className={s.head}> <HeaderContainer/> </Col>
             </Row>
             <Row className={s.content}>
                <Nawigation />
