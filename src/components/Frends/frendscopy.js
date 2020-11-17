@@ -27,14 +27,14 @@ class Frends extends React.Component {
         let Post = () => {
             axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, { withCredentials: true, headers: {'API-KEY': '8c3b7b2e-1143-44b5-aa16-48f012da1a4b'} })
                 .then(responce => {
-                    if (responce.data.resaultCode === 0) this.props.togleFolowAC(item.id)
+                    if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
                 })
         }
 
         let Delete = () => {
             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, { withCredentials: true, headers: {'API-KEY': '8c3b7b2e-1143-44b5-aa16-48f012da1a4b'} })
                 .then(responce => {
-                    if (responce.data.resaultCode === 0) this.props.togleFolowAC(item.id)
+                    if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
                 })
         }
 
