@@ -5,16 +5,20 @@ import f from './f.module.scss'
 import * as axios from 'axios'
 import Loader from '../Loader/loader';
 import { NavLink } from 'react-router-dom';
+import {getUsers} from '../API/api'
+import {follouUser} from '../API/api'
+import {unfollouUser} from '../API/api'
 
 
 class Frends extends React.Component {
 
     componentDidMount() {
+        
         this.props.togleShowLoaderAC(true)
-        axios.get('https://social-network.samuraijs.com/api/1.0/users',  {withCredentials: true},)
+        getUsers()
             .then(responce => {
                 console.log(responce)
-                this.props.setUsersAC(responce.data.items)
+                this.props.setUsersAC(responce.items)
                 this.props.togleShowLoaderAC(false)
             })
     }
@@ -25,14 +29,14 @@ class Frends extends React.Component {
         let link = "/myprofile/" + item.id
 
         let Post = () => {
-            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, { withCredentials: true, headers: {'API-KEY': '8c3b7b2e-1143-44b5-aa16-48f012da1a4b'} })
+            follouUser(item.id)
                 .then(responce => {
                     if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
                 })
         }
 
         let Delete = () => {
-            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, { withCredentials: true, headers: {'API-KEY': '8c3b7b2e-1143-44b5-aa16-48f012da1a4b'} })
+            unfollouUser(item.id)
                 .then(responce => {
                     if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
                 })
@@ -65,10 +69,11 @@ class Frends extends React.Component {
 ShowUsers = (id) => {
     this.props.toglePageAC(id)
     this.props.togleShowLoaderAC(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${id}`, {withCredentials: true})
+    debugger
+    getUsers(id)
         .then(responce => {
             console.log(responce)
-            this.props.setUsersAC(responce.data.items)
+            this.props.setUsersAC(responce.items)
             this.props.togleShowLoaderAC(false)
         })
 }
