@@ -4,6 +4,7 @@ import User from './user'
 import { connect } from 'react-redux';
 import {setUsersPageAC} from '../../Redax/User-page-reduser'
 import { withRouter } from 'react-router-dom'
+import {getUserProfile} from '../API/api'
 
 class UserContainer  extends React.Component{
     componentDidMount() {
@@ -12,9 +13,8 @@ class UserContainer  extends React.Component{
             userId = 2
 
         }
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/'+userId)
+        getUserProfile(userId)
             .then(responce => {
-                console.log(responce)
                 this.props.setUsersPageAC(responce.data)
             })   
     }

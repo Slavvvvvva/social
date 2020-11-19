@@ -9,10 +9,8 @@ const instanse = axios.create({
 })
 
 export const getUsers = (currentPage = 1, pageSize = 10)  => {
-    debugger
     return instanse.get (`users?page=${currentPage}&count=${pageSize}`)
     .then(response => {
-        
         return response.data
     })
 }
@@ -25,6 +23,12 @@ export const follouUser = (id) => {
 }
 export const unfollouUser = (id) => {
     return instanse.delete (`follow/${id}`)
+        .then(responce => {
+            return responce
+        })
+}
+export const getUserProfile = (userId) => {
+    return instanse.get (`profile/${userId}`)
         .then(responce => {
             return responce
         })

@@ -8,8 +8,21 @@ let initialState = {
         {id:4, active:false},
         {id:5, active:false},
     ],
-    isLoader: false
+    isLoader: false,
+    disabledButtond:[]
 }
+
+const TOGLE_DISABLED_BUTTON = "TOGLE_DISABLED_BUTTON"
+let togleDisabladButtonAC = (bisabled, id) => {
+    return(
+        {
+            type: TOGLE_DISABLED_BUTTON,
+            bisabled: bisabled,
+            id: id
+        }
+    )
+}
+
 const TOGLE_SHOW_LOADER = "TOGLE_SHOW_LOADER"
 let togleShowLoaderAC = (showed) => {
     return(
@@ -70,6 +83,7 @@ let FrendsPageReduser = (state = initialState, action) => {
         )}
         case TOGLE_SHOW_LOADER : return {...state, isLoader: action.showed }
         default : return state
+        case TOGLE_DISABLED_BUTTON: return {...state, disabledButtond: action.bisabled ? [...state.disabledButtond, action.id]: state.disabledButtond.filter(item => item !== action.id)  }
     }
 }
 
@@ -79,3 +93,4 @@ let FrendsPageReduser = (state = initialState, action) => {
  export {setUsersAC}
  export {toglePageAC}
  export {togleShowLoaderAC}
+ export {togleDisabladButtonAC}

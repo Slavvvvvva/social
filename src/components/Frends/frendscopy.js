@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from 'reactstrap'
 import avatar from '../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import f from './f.module.scss'
-import * as axios from 'axios'
 import Loader from '../Loader/loader';
 import { NavLink } from 'react-router-dom';
 import {getUsers} from '../API/api'
@@ -23,21 +22,24 @@ class Frends extends React.Component {
             })
     }
 
-
-
     FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
+        
         let link = "/myprofile/" + item.id
 
         let Post = () => {
+            this.props.togleDisabladButtonAC(true, item.id)
             follouUser(item.id)
                 .then(responce => {
+                    this.props.togleDisabladButtonAC(false, item.id)
                     if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
                 })
         }
 
         let Delete = () => {
+            this.props.togleDisabladButtonAC(true, item.id)
             unfollouUser(item.id)
                 .then(responce => {
+                    this.props.togleDisabladButtonAC(false, item.id)
                     if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
                 })
         }
@@ -53,7 +55,7 @@ class Frends extends React.Component {
                         <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
                     </NavLink>
 
-                    <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"}>{item.followed ? "follow" : "unfollow"}</Button>
+                    <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"} disabled ={this.props.ContainerDisabledButton.some(i=> i === item.id )}>{item.followed ? "follow" : "unfollow"}</Button>
                 </div>
                 <div className={f.frends_description}>
                     <h4>{item.name}</h4>
