@@ -1,3 +1,5 @@
+import {getIsLogginned} from '../components/API/api'
+
 let initialState = {
     id: null,
     email: null,
@@ -13,6 +15,17 @@ let initialState = {
         }
     )
 }
+
+export const getIsLogginedTC = () => {
+    return(dispatch) => {
+        getIsLogginned()
+        .then(responce => {
+            if (responce.resultCode === 0)
+            dispatch(authUserDataAC(responce.data))
+        }) 
+    }
+}
+
 let AuthPageReduser = (state = initialState, action) => {
     switch(action.type) {
         

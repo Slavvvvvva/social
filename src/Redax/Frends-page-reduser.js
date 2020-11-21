@@ -1,3 +1,6 @@
+import {getUsers, follouUser, unfollouUser} from '../components/API/api'
+
+
 let initialState = {
     FrendsPage:[
     ],
@@ -62,6 +65,51 @@ let setUsersAC = (users) => {
         }
     )
 }
+
+export const getUsersTC = () => {
+     return(dispatch) => { 
+     dispatch(togleShowLoaderAC(true))
+        getUsers()
+            .then(responce => {
+                dispatch(setUsersAC(responce.items))
+                dispatch(togleShowLoaderAC(false))
+            })
+    }
+
+}
+
+export const getUsersButtonTC = (id) => {
+    return(dispatch) => {
+        dispatch(toglePageAC(id))
+        dispatch(togleShowLoaderAC(true))
+        getUsers(id)
+            .then(responce => {
+                dispatch(setUsersAC(responce.items))
+                dispatch(togleShowLoaderAC(false))
+            }) 
+    }
+}
+export const follouUserTC = (id) => {
+    return(dispatch) => {
+        dispatch(togleDisabladButtonAC(true, id))
+        follouUser(id)
+            .then(responce => {
+                dispatch(togleDisabladButtonAC(false, id))
+                if (responce.data.resultCode === 0) dispatch(togleFolowAC(id))
+            })
+    }
+}
+export const unFollouUserTC = (id) => {
+    return(dispatch) => {
+        dispatch(togleDisabladButtonAC(true, id))
+        unfollouUser(id)
+            .then(responce => {
+                dispatch(togleDisabladButtonAC(false, id))
+                if (responce.data.resultCode === 0) dispatch(togleFolowAC(id))
+            })
+    }
+}
+
 let FrendsPageReduser = (state = initialState, action) => {
     switch(action.type) {
         case TOGLE_FOLLOW :  return {...state, 

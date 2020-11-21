@@ -33,3 +33,9 @@ export const getUserProfile = (userId) => {
             return responce
         })
 }
+export const getIsLogginned = () => {
+    return instanse.get ('auth/me')
+        .then(response => {
+            return response.data
+        })
+}

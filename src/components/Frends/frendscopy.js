@@ -4,22 +4,13 @@ import avatar from '../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import f from './f.module.scss'
 import Loader from '../Loader/loader';
 import { NavLink } from 'react-router-dom';
-import {getUsers} from '../API/api'
-import {follouUser} from '../API/api'
-import {unfollouUser} from '../API/api'
+
 
 
 class Frends extends React.Component {
 
     componentDidMount() {
-        
-        this.props.togleShowLoaderAC(true)
-        getUsers()
-            .then(responce => {
-                console.log(responce)
-                this.props.setUsersAC(responce.items)
-                this.props.togleShowLoaderAC(false)
-            })
+        this.props.getUsersTC()
     }
 
     FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
@@ -27,21 +18,11 @@ class Frends extends React.Component {
         let link = "/myprofile/" + item.id
 
         let Post = () => {
-            this.props.togleDisabladButtonAC(true, item.id)
-            follouUser(item.id)
-                .then(responce => {
-                    this.props.togleDisabladButtonAC(false, item.id)
-                    if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
-                })
+            this.props.follouUserTC(item.id)
         }
 
         let Delete = () => {
-            this.props.togleDisabladButtonAC(true, item.id)
-            unfollouUser(item.id)
-                .then(responce => {
-                    this.props.togleDisabladButtonAC(false, item.id)
-                    if (responce.data.resultCode === 0) this.props.togleFolowAC(item.id)
-                })
+            this.props.unFollouUserTC(item.id)
         }
 
         let TogleFollouServer = () => {
@@ -69,15 +50,7 @@ class Frends extends React.Component {
 
 
 ShowUsers = (id) => {
-    this.props.toglePageAC(id)
-    this.props.togleShowLoaderAC(true)
-    debugger
-    getUsers(id)
-        .then(responce => {
-            console.log(responce)
-            this.props.setUsersAC(responce.items)
-            this.props.togleShowLoaderAC(false)
-        })
+    this.props.getUsersButtonTC(id)
 }
 ChaingePageButtons = () => this.props.ContainerActivePage.map((item) => {
     return (
