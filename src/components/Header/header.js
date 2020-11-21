@@ -1,11 +1,13 @@
-import React from 'react';
-import logo from '../Img/zynga.svg';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import logo from '../Img/zynga.svg'
 import h from './h.module.scss'
+
 
 let Header = (props) =>{
     return (
         <>
-         {props.ConteinerAuthUserData.isAuth? <p>My page</p>  : <p>не залогирован</p> } 
+         {props.ConteinerAuthUserData.isAuth? <p>My page</p>  : <NavLink to="/login" > Залогироватся</NavLink> } 
          <img className = {h.logo} src ={logo} alt="logo company"/>
          
         </>

@@ -7,6 +7,7 @@ import Nawigation from './components/Navigation/nawigation';
 import UserContainer from './components/User/user-container';
 import ChatContainer from './components/Massedges/messeges.container'
 import FrendsContainer from './components/Frends/frendes-container'
+import Login from './components/Login/login'
 
 function App(props) {
    return (
@@ -17,9 +18,10 @@ function App(props) {
             </Row>
             <Row className={s.content}>
                <Nawigation />
-               <Route path='/meseges' render ={ () => <ChatContainer store = {props.store}  /> } />
-               <Route path='/myprofile/:userId?' render={ () =>  <UserContainer store = {props.store} /> } />
-               <Route path='/frends' render={ () =>  <FrendsContainer store = {props.store} /> } />
+               <Route path='/meseges' render ={ () => <ChatContainer /> } />
+               <Route path='/myprofile/:userId?' render={ () =>  <UserContainer /> } />
+               <Route path='/frends' render={ () =>  <FrendsContainer /> } />
+               <Route path='/login' render={ () =>  <Login/> } />
             </Row>
             <Row>
                <Col className={s.foot}>подвал</Col>

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Chat from './masseges'
 import { AddMessegeActionCreator } from '../../Redax/Meseges-page-reduser';
 import { connect } from 'react-redux';
@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 let mapStateToProps = (state) => {
     return {
         ContainerDialogName: state.MesegesPage.DialogNameData,
-        ConteinerMyMessageContent: state.MesegesPage.MasegesData
+        ConteinerMyMessageContent: state.MesegesPage.MasegesData,
+        ContainerAuthData: state.AuthData.isAuth
     }
 }
 

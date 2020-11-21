@@ -10,7 +10,8 @@ let mapStateToProps = (state) =>{
         ConteinerFrends: state.FrendsPage,
         ContainerActivePage: state.FrendsPage.ActivePage,
         ContainerShowLoader: state.FrendsPage.isLoader,
-        ContainerDisabledButton: state.FrendsPage.disabledButtond
+        ContainerDisabledButton: state.FrendsPage.disabledButtond,
+        ContainerAuthData: state.AuthData.isAuth
     }
 }
 

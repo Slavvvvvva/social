@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import { Button } from 'reactstrap'
 import avatar from '../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import f from './f.module.scss'
-import Loader from '../Loader/loader';
-import { NavLink } from 'react-router-dom';
+import Loader from '../Loader/loader'
+import { NavLink } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -14,7 +15,7 @@ class Frends extends React.Component {
     }
 
     FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
-        
+
         let link = "/myprofile/" + item.id
 
         let Post = () => {
@@ -29,8 +30,8 @@ class Frends extends React.Component {
             item.followed ? Delete() : Post()
         }
 
-        return(
-            <div className = { f.frends } >
+        return (
+            <div className={f.frends} >
                 <div className={f.frends_logo}>
                     <NavLink to={link} >
                         <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
@@ -49,25 +50,28 @@ class Frends extends React.Component {
     })
 
 
-ShowUsers = (id) => {
-    this.props.getUsersButtonTC(id)
-}
-ChaingePageButtons = () => this.props.ContainerActivePage.map((item) => {
-    return (
-        <Button outline={item.active ? false : true} color="info" onClick={() => this.ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
-    )
-})
-render() {
-    return (
-        <div className={f.frends_wrapper}>
-            <div className={f.show_users_wrapper}>
-                {this.ChaingePageButtons()}
+    ShowUsers = (id) => {
+        this.props.getUsersButtonTC(id)
+    }
+    ChaingePageButtons = () => this.props.ContainerActivePage.map((item) => {
+        return (
+            <Button outline={item.active ? false : true} color="info" onClick={() => this.ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
+        )
+    })
+    render() {
+
+        if (!this.props.ContainerAuthData) return <Redirect to={'/login'} />
+
+        return (
+            <div className={f.frends_wrapper}>
+                <div className={f.show_users_wrapper}>
+                    {this.ChaingePageButtons()}
+                </div>
+                {this.props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
+                {this.FrendItem()}
             </div>
-            {this.props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
-            {this.FrendItem()}
-        </div>
-    )
-}
+        )
+    }
 }
 
 export default Frends

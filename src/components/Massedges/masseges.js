@@ -1,11 +1,12 @@
-import React from 'react';
-import { ListGroup } from 'reactstrap';
-import { InputGroup, InputGroupAddon, Button } from 'reactstrap';
-import { Col } from 'reactstrap';
+import React from 'react'
+import { ListGroup } from 'reactstrap'
+import { InputGroup, InputGroupAddon, Button } from 'reactstrap'
+import { Col } from 'reactstrap'
 import m from './m.module.scss'
-import DialogItem from './dialog-item/dialog-item.js';
-import MyMessag from './my-meseges/my-meseges';
-import OponentMesage from './oponent-meseges/oponent-meseges';
+import DialogItem from './dialog-item/dialog-item.js'
+import MyMessag from './my-meseges/my-meseges'
+import OponentMesage from './oponent-meseges/oponent-meseges'
+import { Redirect } from 'react-router-dom'
 
 const Chat = (props) => {
     const DialogName = props.ContainerDialogName.map((item) => {
@@ -22,6 +23,9 @@ const Chat = (props) => {
     
     let TaickPost = React.createRef();
     let AddMessege = () => props.ContainerAddMessege(TaickPost)
+
+    if (!props.ContainerAuthData) return <Redirect to = {'/login'} />
+
     return (
         <Col className={m.wrapper}>
             <ListGroup className={m.user_list}>
