@@ -24,8 +24,6 @@ const Chat = (props) => {
     let TaickPost = React.createRef();
     let AddMessege = () => props.ContainerAddMessege(TaickPost)
 
-    if (!props.ContainerAuthData) return <Redirect to = {'/login'} />
-
     return (
         <Col className={m.wrapper}>
             <ListGroup className={m.user_list}>

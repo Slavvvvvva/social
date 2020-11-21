@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { togleFolowAC, toglePageAC, togleShowLoaderAC,
         togleDisabladButtonAC, getUsersTC,
         getUsersButtonTC,follouUserTC,unFollouUserTC } from '../../Redax/Frends-page-reduser';
 import { setUsersAC} from '../../Redax/Frends-page-reduser'
+import { withAuthRedireact } from '../HOC/withAuth-redirect';
 import Frends from './frendscopy'
 
 let mapStateToProps = (state) =>{
@@ -32,9 +34,11 @@ let mapStateToProps = (state) =>{
     }
 } */
 
-const FrendsContainer = connect(mapStateToProps,
-    {togleFolowAC,setUsersAC,toglePageAC,
-    togleShowLoaderAC,togleDisabladButtonAC,
-    getUsersTC, getUsersButtonTC,follouUserTC,
-    unFollouUserTC })(Frends)
-export default FrendsContainer
+export default compose (
+    connect(mapStateToProps,
+        {togleFolowAC,setUsersAC,toglePageAC,
+        togleShowLoaderAC,togleDisabladButtonAC,
+        getUsersTC, getUsersButtonTC,follouUserTC,
+        unFollouUserTC }),
+    withAuthRedireact,
+) (Frends)
