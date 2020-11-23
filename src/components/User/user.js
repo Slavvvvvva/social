@@ -8,7 +8,7 @@ import UserInfo from './user-info/user-info';
 const User = (props) => {
     return (
         <Col className = {u.user}>
-            <UserInfo ConteinerFrends = {props.ConteinerFrends}/>
+            <UserInfo ConteinerFrends = {props.ConteinerFrends} getUserStatusTC = {props.getUserStatusTC} ContainearUserStatus={props.ContainearUserStatus}/>
             <ComentsContainer /> 
         </Col>
     )

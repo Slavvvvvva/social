@@ -1,3 +1,4 @@
+import { getUserStatus } from "../components/API/api"
 
 let initialState = {
   PostsData: [
@@ -7,7 +8,8 @@ let initialState = {
     { id: 4, massege: "Научился переключатся между страницами", likeCounter: 500 },
     { id: 5, massege: "Я сделал страницу с сообщениями", likeCounter: 550 },
   ],
-  UserData:null
+  UserData:null,
+  UserStatus:'статуса нет'
 }
 
 let ADD_NEW_POST = 'ADD_NEW_POST'
@@ -29,6 +31,26 @@ let setUsersPageAC = (users) => {
         }
     )
 }
+const SET_USERS_SATATUS ="SET_USERS_SATATUS "
+let setUsersStatusAC = (userStatus) => {
+    return(
+        {
+            type: SET_USERS_SATATUS  ,
+            userStatus: userStatus
+        }
+    )
+}
+
+export const getUserStatusTC = (userId) => {
+  return(dispatch) => { 
+     getUserStatus(userId)
+         .then(responce => {
+           debugger
+             dispatch(setUsersStatusAC (responce.data))
+         })
+ }
+
+}
 
 
 let UserPageReduser = (state = initialState, action) => {
@@ -40,6 +62,8 @@ let UserPageReduser = (state = initialState, action) => {
         return stateCopy
       } else if ( action.type === SET_USERS_PAGE ) {
         return {...state, UserData: action.users}
+      } else if (action.type === SET_USERS_SATATUS ) {
+        return {...state, UserStatus: action.userStatus}
       }
     return state
 }
@@ -47,3 +71,4 @@ let UserPageReduser = (state = initialState, action) => {
 export default UserPageReduser
 export {AddPostActionCreator}
 export {setUsersPageAC}
+export {setUsersStatusAC}

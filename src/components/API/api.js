@@ -39,3 +39,15 @@ export const getIsLogginned = () => {
             return response.data
         })
 }
+export const getUserStatus = (userId) => {
+    return instanse.get(`profile/status/${userId}`)
+        .then(response =>{
+            return response
+        })
+}
+export const puatUserStatus = (usearStatus) => {
+    return instanse.put(`profile/status`,{status: usearStatus})
+        .then(response =>{
+            return response
+        })
+}

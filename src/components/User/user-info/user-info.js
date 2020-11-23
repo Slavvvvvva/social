@@ -18,7 +18,7 @@ const UserInfo = (props) => {
             <div className={ui.info}>
                 <p className={ui.name}>{props.ConteinerFrends.fullName}</p>
                 <p>{props.ConteinerFrends.aboutMe}</p>
-                <UserStatus/>
+                <UserStatus getUserStatusTC = {props.getUserStatusTC} ContainearUserStatus={props.ContainearUserStatus}/>
                 <p>Creator this piece of .... React</p>
                 <p>27 years old </p>
                 <p>Bielsko - Biala, 43-300 Poland</p>
