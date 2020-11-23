@@ -4,7 +4,7 @@ class UserStatus extends React.Component {
     debugger
     componentDidMount(){
         debugger
-        this.props.getUserStatusTC(2)
+        this.props.getUserStatusTC((this.props.match.params.userId)?this.props.match.params.userId:this.props.ContainerAuthData.id)
     }
     state = {
         chaindg: true,

@@ -10,7 +10,7 @@ class UserContainer  extends React.Component{
     componentDidMount() {
         let userId = this.props.match.params.userId
         if(!this.props.match.params.userId){
-            userId = 2
+            userId = this.props.ContainerAuthData.id
 
         }
         getUserProfile(userId)
@@ -30,7 +30,8 @@ let mapStateToProps = (state) => {
     return  {
         ConteinerFrends: state.UserPage.UserData,
         ContainerShowLoader: state.FrendsPage.isLoader,
-        ContainearUserStatus: state.UserPage.UserStatus
+        ContainearUserStatus: state.UserPage.UserStatus,
+        ContainerAuthData: state.AuthData
     }
 }
 let UrlDataUserContainer =  withRouter(UserContainer)
