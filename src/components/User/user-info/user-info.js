@@ -10,7 +10,7 @@ const UserInfo = (props) => {
             <Loader/>
         )
     }
-    debugger
+
     return (
         <div className={ui.space}>
             <div className={ui.avatar}>

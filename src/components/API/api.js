@@ -45,7 +45,7 @@ export const getUserStatus = (userId) => {
             return response
         })
 }
-export const puatUserStatus = (usearStatus) => {
+export const putUserStatus = (usearStatus) => {
     return instanse.put(`profile/status`,{status: usearStatus})
         .then(response =>{
             return response

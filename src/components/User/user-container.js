@@ -2,7 +2,7 @@ import React from 'react'
 import * as axios from 'axios'
 import User from './user'
 import { connect } from 'react-redux';
-import {setUsersPageAC, setUsersStatusAC, getUserStatusTC} from '../../Redax/User-page-reduser'
+import {setUsersPageAC, setUsersStatusAC, getUserStatusTC,putUserStatusTC} from '../../Redax/User-page-reduser'
 import { withRouter } from 'react-router-dom'
 import {getUserProfile} from '../API/api'
 
@@ -35,5 +35,5 @@ let mapStateToProps = (state) => {
     }
 }
 let UrlDataUserContainer =  withRouter(UserContainer)
-export default connect(mapStateToProps,{setUsersPageAC, setUsersStatusAC, getUserStatusTC})(UrlDataUserContainer)
+export default connect(mapStateToProps,{setUsersPageAC, setUsersStatusAC, getUserStatusTC,putUserStatusTC})(UrlDataUserContainer)
 

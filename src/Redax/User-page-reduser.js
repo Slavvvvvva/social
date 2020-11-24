@@ -1,4 +1,4 @@
-import { getUserStatus } from "../components/API/api"
+import { getUserStatus, putUserStatus } from "../components/API/api"
 
 let initialState = {
   PostsData: [
@@ -45,11 +45,17 @@ export const getUserStatusTC = (userId) => {
   return(dispatch) => { 
      getUserStatus(userId)
          .then(responce => {
-           debugger
              dispatch(setUsersStatusAC (responce.data))
          })
  }
-
+}
+export const putUserStatusTC = (status) => {
+  return(dispatch) => { 
+     putUserStatus(status)
+         .then(responce => {
+          if (responce.data.resultCode === 0) dispatch(setUsersStatusAC(status))
+         })
+ }
 }
 
 
