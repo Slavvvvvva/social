@@ -1,4 +1,4 @@
-import {getIsLogginned} from '../components/API/api'
+import {getIsLogginned, Login, LogOut} from '../components/API/api'
 
 let initialState = {
     id: null,
@@ -16,20 +16,56 @@ let initialState = {
     )
 }
 
+let DEL_USER_DATA = 'DEL_USER_DATA'
+let delAuthUserDataAC = () => {
+   return(
+       {
+           type: DEL_USER_DATA
+       }
+   )
+}
+
+
 export const getIsLogginedTC = () => {
     return(dispatch) => {
         getIsLogginned()
         .then(responce => {
-            if (responce.resultCode === 0)
-            dispatch(authUserDataAC(responce.data))
+            if (responce.resultCode === 0){
+                dispatch(authUserDataAC(responce.data))
+            } else if (responce.resultCode === 1) {
+                dispatch(delAuthUserDataAC())
+            }
         }) 
     }
 }
+export const LoginTC = (login, password, rememberMe) => {
+    return(dispatch) => {
+        Login(login, password, rememberMe)
+        .then(responce => {
+            if (responce.resultCode === 0)
+            debugger
+            dispatch( getIsLogginedTC())
+        }) 
+    }
+}
+export const LogautTC = () => {
+    return(dispatch) => {
+        LogOut()
+        .then(responce => {
+            if (responce.resultCode === 0)
+            debugger
+            dispatch( getIsLogginedTC())
+        }) 
+    }
+}
+
 
 let AuthPageReduser = (state = initialState, action) => {
     switch(action.type) {
         
         case SET_USER_DATA : return {...state, ...action.authData, isAuth: true }
+        
+        case DEL_USER_DATA : return {...state, id: null, email: null, login: null, isAuth: false}
         default : return state
     }
 }

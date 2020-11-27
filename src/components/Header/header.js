@@ -5,9 +5,13 @@ import h from './h.module.scss'
 
 
 let Header = (props) =>{
+
+    const Logaut = () =>{
+        props.LogautTC()
+    }
     return (
         <>
-         {props.ConteinerAuthUserData.isAuth? <p>My page</p>  : <NavLink to="/login" > Залогироватся</NavLink> } 
+         {props.ConteinerAuthUserData.isAuth? <button onClick = {Logaut}>LogOut</button>  : <NavLink to="/login" > Залогироватся</NavLink> } 
          <img className = {h.logo} src ={logo} alt="logo company"/>
          
         </>

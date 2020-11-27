@@ -51,3 +51,15 @@ export const putUserStatus = (usearStatus) => {
             return response
         })
 }
+export const Login = (login, password , rememberMe) => {
+    return instanse.post('/auth/login', {email:login, password: password, rememberMe: rememberMe})
+        .then(response => {
+            return response
+        })
+}
+export const LogOut = () => {
+    return instanse.post('auth/logout')
+        .then(response => {
+            return response
+        })
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './header'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {getIsLogginedTC} from '../../Redax/authent-reduser'
+import {getIsLogginedTC, LogautTC} from '../../Redax/authent-reduser'
 
 
 class HeaderContainer extends React.Component{
@@ -23,4 +23,4 @@ let mapStateToProps = (state) => {
     }
 }
 let UrlDataHeaderContainer =  withRouter(HeaderContainer)
-export default connect(mapStateToProps,{getIsLogginedTC})(UrlDataHeaderContainer)
+export default connect(mapStateToProps,{getIsLogginedTC, LogautTC})(UrlDataHeaderContainer)

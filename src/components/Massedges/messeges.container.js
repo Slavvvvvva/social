@@ -1,8 +1,7 @@
-
 import Chat from './masseges'
 import { AddMessegeActionCreator } from '../../Redax/Meseges-page-reduser';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { withAuthRedireact } from '../HOC/withAuth-redirect';
 
 
