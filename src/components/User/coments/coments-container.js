@@ -11,9 +11,8 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         AddPostContainer: (input) => {
-            let action = AddPostActionCreator(input.current.value)
+            let action = AddPostActionCreator(input)
             dispatch(action)
-            input.current.value = ""
         }
     }
 

@@ -7,6 +7,7 @@ import DialogItem from './dialog-item/dialog-item.js'
 import MyMessag from './my-meseges/my-meseges'
 import OponentMesage from './oponent-meseges/oponent-meseges'
 import { Redirect } from 'react-router-dom'
+import { reduxForm, Field } from 'redux-form'
 
 const Chat = (props) => {
     const DialogName = props.ContainerDialogName.map((item) => {
@@ -21,8 +22,12 @@ const Chat = (props) => {
         )
     })
     
-    let TaickPost = React.createRef();
-    let AddMessege = () => props.ContainerAddMessege(TaickPost)
+    
+
+    let AddMessege = (formData) => {
+        console.log(formData)
+        props.ContainerAddMessege(formData.massege)
+    } 
 
     return (
         <Col className={m.wrapper}>
@@ -33,14 +38,22 @@ const Chat = (props) => {
                 <div className={m.space_messs}>
                     {MyMessageContent}
                 </div>
-                <InputGroup className={m.input}>
-                    <input ref={TaickPost} />
-                    <InputGroupAddon addonType="append">
-                        <Button onClick={AddMessege} color="secondary">Отправить</Button>
-                    </InputGroupAddon>
-                </InputGroup>
+                <AddMassegeReduxForm onSubmit={AddMessege} />
             </div>
         </Col>
     )
 }
-export default Chat;
+const AddMessegeForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field placeholder={'Massege'} name={'massege'} component={'input'} />
+            </div>
+            <div>
+                <button>Send</button>
+            </div>
+        </form>
+    )
+}
+const AddMassegeReduxForm =reduxForm( {form:'AddMassege'})(AddMessegeForm)
+export default Chat

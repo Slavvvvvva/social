@@ -16,9 +16,9 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         ContainerAddMessege: (button) => {
-            let action = AddMessegeActionCreator(button.current.value)
+            let action = AddMessegeActionCreator(button)
             dispatch(action)
-            button.current.value = ""
+           
         }
     }
 }
