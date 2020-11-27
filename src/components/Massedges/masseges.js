@@ -47,7 +47,7 @@ const AddMessegeForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Massege'} name={'massege'} component={'input'} />
+                <Field placeholder={'Massege'} name={'massege'} component={'textarea'} />
             </div>
             <div>
                 <button>Send</button>
