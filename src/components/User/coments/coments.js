@@ -2,6 +2,8 @@ import React from 'react';
 import c from './coments.module.scss';
 import ComentItem from './coment-item/coment-item.js';
 import { reduxForm, Field } from 'redux-form'
+import { reqiredField, validMaxLenght } from '../../../util/validation';
+import { TextArea } from '../../Loader/textarea';
 
 const Coments = (props) => {
 
@@ -28,12 +30,13 @@ const Coments = (props) => {
         </div>
     )
 }
-
+const MaxLenght20 = validMaxLenght(20)
 const AddPost = (props) => {
+   
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Новый пост'} name={'NevPost'} component={'input'} />
+                <Field placeholder={'Новый пост'} name={'NevPost'} component={TextArea} validate ={ [reqiredField, MaxLenght20]} />
 
             </div>
             <div>

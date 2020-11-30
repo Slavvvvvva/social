@@ -8,6 +8,8 @@ import MyMessag from './my-meseges/my-meseges'
 import OponentMesage from './oponent-meseges/oponent-meseges'
 import { Redirect } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
+import { TextArea } from '../Loader/textarea'
+import { reqiredField, validMaxLenght } from '../../util/validation'
 
 const Chat = (props) => {
     const DialogName = props.ContainerDialogName.map((item) => {
@@ -43,11 +45,12 @@ const Chat = (props) => {
         </Col>
     )
 }
+const MaxLenght100 = validMaxLenght(100) 
 const AddMessegeForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Massege'} name={'massege'} component={'textarea'} />
+                <Field placeholder={'Massege'} name={'massege'} component={TextArea} validate = {[reqiredField, MaxLenght100]} />
             </div>
             <div>
                 <button>Send</button>
