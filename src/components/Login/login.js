@@ -3,12 +3,19 @@ import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import {LoginTC} from '../../Redax/authent-reduser'
+import { Input } from '../Loader/textarea'
+import { reqiredField } from '../../util/validation'
+import { Redirect } from 'react-router-dom'
 
 const LoginForm = (props) => {
     const LoginData = (formData) => {
         console.log(formData)
         debugger
         props.LoginTC(formData.login, formData.Password, formData.rememberMe )
+    }
+    debugger
+    if (props.isAuth) {
+        return <Redirect to={'/myprofile'}/>
     }
     return (
         <>
@@ -22,14 +29,15 @@ const Login= (props) => {
     return (
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder={'Login'} name={'login'} component={'input'} />
+                    <Field placeholder={'Login'} name={'login'} component={Input} validate ={[reqiredField]} />
                 </div>
                 <div>
-                    <Field placeholder={'Password'} name={'Password'}  component={'input'} />
+                    <Field placeholder={'Password'} name={'Password'} type ={'password'}  component={Input} validate ={[reqiredField]} />
                 </div>
                 <div>
-                    <Field type={'checkbox'} name={'rememberMe'}  component={'input'}/> <p>remember me</p>
+                    <Field type={'checkbox'} name={'rememberMe'}  component={Input}/> <p>remember me</p>
                 </div>
+                {props.error && <div>{props.error}</div>}
                 <div>
                     <button>Login</button>
                 </div>
@@ -41,6 +49,7 @@ const LoginReduxForm =reduxForm( {form:'Login'})(Login)
 
 let mapStateToProps = (state) => {
     return {
+        isAuth : state.AuthData.isAuth
         
     }
 }

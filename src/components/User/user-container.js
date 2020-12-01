@@ -9,7 +9,7 @@ import {getUserProfile} from '../API/api'
 class UserContainer  extends React.Component{
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if(!this.props.match.params.userId){
+        if(!userId){
             userId = this.props.ContainerAuthData.id
 
         }

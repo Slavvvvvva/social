@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form'
 import {getIsLogginned, Login, LogOut} from '../components/API/api'
 
 let initialState = {
@@ -42,9 +43,11 @@ export const LoginTC = (login, password, rememberMe) => {
     return(dispatch) => {
         Login(login, password, rememberMe)
         .then(responce => {
-            if (responce.resultCode === 0)
-            debugger
+            if (responce.resultCode === 0){
             dispatch( getIsLogginedTC())
+            } else {
+                dispatch(stopSubmit('Login', {_error: responce.data.messages}))
+            }
         }) 
     }
 }
