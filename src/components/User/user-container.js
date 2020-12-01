@@ -11,7 +11,8 @@ class UserContainer  extends React.Component{
         let userId = this.props.match.params.userId
         if(!userId){
             userId = this.props.ContainerAuthData.id
-
+            
+            
         }
         getUserProfile(userId)
             .then(responce => {

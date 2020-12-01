@@ -1,6 +1,5 @@
 import React from 'react'
 import { ListGroup } from 'reactstrap'
-import { InputGroup, InputGroupAddon, Button } from 'reactstrap'
 import { Col } from 'reactstrap'
 import m from './m.module.scss'
 import DialogItem from './dialog-item/dialog-item.js'

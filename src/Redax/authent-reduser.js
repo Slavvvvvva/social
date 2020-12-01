@@ -29,7 +29,7 @@ let delAuthUserDataAC = () => {
 
 export const getIsLogginedTC = () => {
     return(dispatch) => {
-        getIsLogginned()
+        return getIsLogginned()
         .then(responce => {
             if (responce.resultCode === 0){
                 dispatch(authUserDataAC(responce.data))

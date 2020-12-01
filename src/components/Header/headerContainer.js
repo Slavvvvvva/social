@@ -6,9 +6,7 @@ import {getIsLogginedTC, LogautTC} from '../../Redax/authent-reduser'
 
 
 class HeaderContainer extends React.Component{
-    componentDidMount() {
-        this.props.getIsLogginedTC()
-    }
+  
     render() {
         return (
             <>
@@ -23,4 +21,4 @@ let mapStateToProps = (state) => {
     }
 }
 let UrlDataHeaderContainer =  withRouter(HeaderContainer)
-export default connect(mapStateToProps,{getIsLogginedTC, LogautTC})(UrlDataHeaderContainer)
+export default connect(mapStateToProps,{ LogautTC})(UrlDataHeaderContainer)
