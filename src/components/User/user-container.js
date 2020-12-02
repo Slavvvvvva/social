@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {setUsersPageAC, setUsersStatusAC, getUserStatusTC,putUserStatusTC} from '../../Redax/User-page-reduser'
 import { withRouter } from 'react-router-dom'
 import {getUserProfile} from '../API/api'
+import { getAuthData, getFrends, getUserStatus, showLoader } from '../../Redax/users-selector';
 
 class UserContainer  extends React.Component{
     componentDidMount() {
@@ -29,12 +30,14 @@ class UserContainer  extends React.Component{
 
 let mapStateToProps = (state) => {
     return  {
-        ConteinerFrends: state.UserPage.UserData,
-        ContainerShowLoader: state.FrendsPage.isLoader,
-        ContainearUserStatus: state.UserPage.UserStatus,
-        ContainerAuthData: state.AuthData
+        ConteinerFrends: getFrends(state),
+        ContainerShowLoader: showLoader(state),
+        ContainearUserStatus: getUserStatus(state),
+        ContainerAuthData: getAuthData(state)
     }
 }
+
+
 let UrlDataUserContainer =  withRouter(UserContainer)
 export default connect(mapStateToProps,{setUsersPageAC, setUsersStatusAC, getUserStatusTC,putUserStatusTC})(UrlDataUserContainer)
 
