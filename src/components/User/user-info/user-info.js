@@ -2,7 +2,7 @@ import React from 'react';
 import ui from './ui.module.scss';
 import avatar from '../../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import Loader from '../../Loader/loader';
-import UserStatus from './user-status/user-status';
+import UserStatus from './user-status/user-status-hooks';
 
 const UserInfo = (props) => {
     if(!props.ConteinerFrends){
