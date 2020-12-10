@@ -11,8 +11,19 @@ let initialState = {
         {id:4, active:false},
         {id:5, active:false},
     ],
+    totalUserCount: 0,
     isLoader: false,
     disabledButtond:[]
+}
+
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
+let setUsersCountAC = (count) => {
+    return(
+        {
+            type: TOGLE_DISABLED_BUTTON,
+            count: count
+        }
+    )
 }
 
 const TOGLE_DISABLED_BUTTON = "TOGLE_DISABLED_BUTTON"
@@ -66,12 +77,13 @@ let setUsersAC = (users) => {
     )
 }
 
-export const getUsersTC = () => {
+export const getUsersTC = (currentPage) => {
      return(dispatch) => { 
      dispatch(togleShowLoaderAC(true))
-        getUsers()
+        getUsers(currentPage)
             .then(responce => {
                 dispatch(setUsersAC(responce.items))
+                dispatch(setUsersCountAC(responce.totalCount))
                 dispatch(togleShowLoaderAC(false))
             })
     }
@@ -130,6 +142,7 @@ let FrendsPageReduser = (state = initialState, action) => {
             }
         )}
         case TOGLE_SHOW_LOADER : return {...state, isLoader: action.showed }
+        case SET_TOTAL_USERS_COUNT : return {...state, totalUserCount: action.count}
         default : return state
         case TOGLE_DISABLED_BUTTON: return {...state, disabledButtond: action.bisabled ? [...state.disabledButtond, action.id]: state.disabledButtond.filter(item => item !== action.id)  }
     }

@@ -5,73 +5,86 @@ import f from './f.module.scss'
 import Loader from '../Loader/loader'
 import { NavLink } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 
-class Frends extends React.Component {
+const Frends = (props) => {
 
-    componentDidMount() {
-        this.props.getUsersTC()
+    useEffect(() => {
+        props.getUsersTC()
+    }, [])
+
+    const [Buutton, setButton] = useState([
+        { id: 1, active: true },
+        { id: 2, active: false },
+        { id: 3, active: false },
+        { id: 4, active: false },
+        { id: 5, active: false },
+    ])
+    console.log(Buutton)
+
+    const FrendItem = () => {
+        props.ConteinerFrends.FrendsPage.map((item) => {
+
+            let link = "/myprofile/" + item.id
+
+            let Post = () => {
+                props.follouUserTC(item.id)
+            }
+
+            let Delete = () => {
+                props.unFollouUserTC(item.id)
+            }
+
+            let TogleFollouServer = () => {
+                item.followed ? Delete() : Post()
+            }
+
+            return (
+                <div className={f.frends} >
+                    <div className={f.frends_logo}>
+                        <NavLink to={link} >
+                            <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
+                        </NavLink>
+
+                        <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"} disabled={props.ContainerDisabledButton.some(i => i === item.id)}>{item.followed ? "follow" : "unfollow"}</Button>
+                    </div>
+                    <div className={f.frends_description}>
+                        <h4>{item.name}</h4>
+                        <p>{item.status ? item.status : "Статуса нет"}</p>
+                        <p> Страны нет </p>
+                        <p> Адркса нет </p>
+                    </div>
+                </div>
+            )
+        })
     }
 
-    FrendItem = () => this.props.ConteinerFrends.FrendsPage.map((item) => {
+    const ShowUsers = (id) => {
+        props.getUsersButtonTC(id)
+    }
+    const ChaingePageButtons = (props) => {
+        props.ContainerActivePage.map((item) => {
+            return (
+                <Button outline={item.active ? false : true} color="info" onClick={() => ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
+            )
+        })
+    }
 
-        let link = "/myprofile/" + item.id
+    if (!props.ContainerAuthData) return <Redirect to={'/login'} />
 
-        let Post = () => {
-            this.props.follouUserTC(item.id)
-        }
+    return (
 
-        let Delete = () => {
-            this.props.unFollouUserTC(item.id)
-        }
-
-        let TogleFollouServer = () => {
-            item.followed ? Delete() : Post()
-        }
-
-        return (
-            <div className={f.frends} >
-                <div className={f.frends_logo}>
-                    <NavLink to={link} >
-                        <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
-                    </NavLink>
-
-                    <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"} disabled ={this.props.ContainerDisabledButton.some(i=> i === item.id )}>{item.followed ? "follow" : "unfollow"}</Button>
-                </div>
-                <div className={f.frends_description}>
-                    <h4>{item.name}</h4>
-                    <p>{item.status ? item.status : "Статуса нет"}</p>
-                    <p> Страны нет </p>
-                    <p> Адркса нет </p>
-                </div>
+        <div className={f.frends_wrapper}>
+            <div className={f.show_users_wrapper}>
+                {ChaingePageButtons}
             </div>
-        )
-    })
-
-
-    ShowUsers = (id) => {
-        this.props.getUsersButtonTC(id)
-    }
-    ChaingePageButtons = () => this.props.ContainerActivePage.map((item) => {
-        return (
-            <Button outline={item.active ? false : true} color="info" onClick={() => this.ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
-        )
-    })
-    render() {
-
-        if (!this.props.ContainerAuthData) return <Redirect to={'/login'} />
-
-        return (
-            <div className={f.frends_wrapper}>
-                <div className={f.show_users_wrapper}>
-                    {this.ChaingePageButtons()}
-                </div>
-                {this.props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
-                {this.FrendItem()}
-            </div>
-        )
-    }
+            {props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
+            {FrendItem}
+        </div>
+    )
 }
 
 export default Frends
