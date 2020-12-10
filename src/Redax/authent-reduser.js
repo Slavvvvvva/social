@@ -43,7 +43,8 @@ export const LoginTC = (login, password, rememberMe) => {
     return(dispatch) => {
         Login(login, password, rememberMe)
         .then(responce => {
-            if (responce.resultCode === 0){
+            if (responce.data.resultCode === 0){
+                debugger
             dispatch( getIsLogginedTC())
             } else {
                 dispatch(stopSubmit('Login', {_error: responce.data.messages}))
