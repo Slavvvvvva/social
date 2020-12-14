@@ -25,53 +25,54 @@ const Frends = (props) => {
     ])
     console.log(Buutton)
 
-    const FrendItem = () => {
-        props.ConteinerFrends.FrendsPage.map((item) => {
+    const FrendItem = props.ConteinerFrends.FrendsPage.map((item) => {
 
-            let link = "/myprofile/" + item.id
+        let link = "/myprofile/" + item.id
 
-            let Post = () => {
-                props.follouUserTC(item.id)
-            }
+        let Post = () => {
+            props.follouUserTC(item.id)
+        }
 
-            let Delete = () => {
-                props.unFollouUserTC(item.id)
-            }
+        let Delete = () => {
+            props.unFollouUserTC(item.id)
+        }
 
-            let TogleFollouServer = () => {
-                item.followed ? Delete() : Post()
-            }
+        let TogleFollouServer = () => {
+            item.followed ? Delete() : Post()
+        }
 
-            return (
-                <div className={f.frends} >
-                    <div className={f.frends_logo}>
-                        <NavLink to={link} >
-                            <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
-                        </NavLink>
+        return (
+            <div className={f.frends} >
+                <div className={f.frends_logo}>
+                    <NavLink to={link} >
+                        <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
+                    </NavLink>
 
-                        <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"} disabled={props.ContainerDisabledButton.some(i => i === item.id)}>{item.followed ? "follow" : "unfollow"}</Button>
-                    </div>
-                    <div className={f.frends_description}>
-                        <h4>{item.name}</h4>
-                        <p>{item.status ? item.status : "Статуса нет"}</p>
-                        <p> Страны нет </p>
-                        <p> Адркса нет </p>
-                    </div>
+                    <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"} disabled={props.ContainerDisabledButton.some(i => i === item.id)}>{item.followed ? "follow" : "unfollow"}</Button>
                 </div>
-            )
-        })
-    }
+                <div className={f.frends_description}>
+                    <h4>{item.name}</h4>
+                    <p>{item.status ? item.status : "Статуса нет"}</p>
+                    <p> Страны нет </p>
+                    <p> Адркса нет </p>
+                </div>
+            </div>
+        )
+    })
+
 
     const ShowUsers = (id) => {
         props.getUsersButtonTC(id)
+        setButton(Buutton.forEach(element => {
+            (element.id ===id)? element.active = true : element.active = false
+        }))
     }
-    const ChaingePageButtons = (props) => {
-        props.ContainerActivePage.map((item) => {
-            return (
-                <Button outline={item.active ? false : true} color="info" onClick={() => ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
-            )
-        })
-    }
+    const ChaingePageButtons = Buutton.map((item) => {
+        return (
+            <Button outline={item.active ? false : true} color="info" onClick={() => ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
+        )
+    })
+
 
     if (!props.ContainerAuthData) return <Redirect to={'/login'} />
 
