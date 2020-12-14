@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 
 
-const Frends = (props) => {
+const Frends = React.memo((props) => {
 
     useEffect(() => {
         props.getUsersTC()
@@ -23,7 +23,7 @@ const Frends = (props) => {
         { id: 4, active: false },
         { id: 5, active: false },
     ])
-    console.log(Buutton)
+    const [lastActivePagie , setlastActive] = useState(1) 
 
     const FrendItem = props.ConteinerFrends.FrendsPage.map((item) => {
 
@@ -63,15 +63,32 @@ const Frends = (props) => {
 
     const ShowUsers = (id) => {
         props.getUsersButtonTC(id)
-        setButton(Buutton.forEach(element => {
-            (element.id ===id)? element.active = true : element.active = false
+        setButton(Buutton.map((element) => {
+            if (element.id === id) {
+                setlastActive(id)
+                return { ...element, active: true }
+            }
+            return { ...element, active: false }
         }))
     }
+
+
     const ChaingePageButtons = Buutton.map((item) => {
         return (
             <Button outline={item.active ? false : true} color="info" onClick={() => ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
         )
     })
+
+    const back = () => {
+        setButton(Buutton.map( (e) => {
+            return { ...e, id : e.id-5, active: (e.id-5 === lastActivePagie)? true: false}
+        }))
+    }
+    const forword = () => {
+        setButton(Buutton.map( (e) => {
+            return { ...e, id : e.id+5, active: (e.id+5 === lastActivePagie)? true: false}
+        }))
+    }
 
 
     if (!props.ContainerAuthData) return <Redirect to={'/login'} />
@@ -80,12 +97,14 @@ const Frends = (props) => {
 
         <div className={f.frends_wrapper}>
             <div className={f.show_users_wrapper}>
+                { (Buutton[0].id > 1) ?  <Button onClick = {back}> Назад </Button> : null}
                 {ChaingePageButtons}
+                <Button  onClick = {forword}> Вперед </Button>
             </div>
             {props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
             {FrendItem}
         </div>
     )
-}
+})
 
 export default Frends
