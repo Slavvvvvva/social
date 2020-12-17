@@ -63,3 +63,12 @@ export const LogOut = () => {
             return response
         })
 }
+export const putFoto = (foto) => {
+    const photo = new FormData()
+    photo.append("image", foto)
+    return instanse.put('profile/photo', photo, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+    })
+}

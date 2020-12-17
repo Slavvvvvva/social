@@ -11,10 +11,16 @@ const UserInfo = (props) => {
         )
     }
 
+    const LoadPhoto = (e) => {
+       let fotoFile = e.target.files[0]
+       props.UploadFileTC(fotoFile)
+    }
+
     return (
         <div className={ui.space}>
             <div className={ui.avatar}>
-                <img src={props.ConteinerFrends.photos.large} alt="avatar" />
+                <img src={props.ConteinerFrends.photos.large || avatar} alt="avatar" />
+                {!!props.match.params.userId || <input type ='file' onChange ={LoadPhoto}/> }
             </div>
             <div className={ui.info}>
                 <p className={ui.name}>{props.ConteinerFrends.fullName}</p>

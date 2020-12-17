@@ -1,4 +1,4 @@
-import { getUserStatus, putUserStatus } from "../components/API/api"
+import { getUserStatus, putFoto, putUserStatus } from "../components/API/api"
 
 let initialState = {
   PostsData: [
@@ -49,12 +49,23 @@ export const getUserStatusTC = (userId) => {
          })
  }
 }
+
 export const putUserStatusTC = (status) => {
   return(dispatch) => { 
      putUserStatus(status)
          .then(responce => {
           if (responce.data.resultCode === 0) dispatch(setUsersStatusAC(status))
          })
+ }
+}
+
+export const UploadFileTC = (foto) => {
+  return(dispatch) => { 
+     putFoto(foto)
+         .then(responce => {
+           debugger
+          if (responce.data.resultCode === 0) dispatch(setUsersPageAC(responce.data.data))
+        })
  }
 }
 
