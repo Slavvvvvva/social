@@ -33,7 +33,7 @@ const UserStatus = (props) =>{
                     <div>
                         <p onDoubleClick={ChaingStatusON}> {props.ContainearUserStatus || 'статуса нет'}</p>
                     </div>}
-            </>
+        </>
     )
 }
 export default UserStatus

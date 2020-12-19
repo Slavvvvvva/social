@@ -10,3 +10,6 @@ export const getUserStatus =(state) => {
 export const getAuthData = (state) => {
     return state.AuthData
 }
+export const getEditMode = (state) => {
+    return state.UserPage.EditMode
+}

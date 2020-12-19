@@ -9,7 +9,17 @@ let initialState = {
     { id: 5, massege: "Я сделал страницу с сообщениями", likeCounter: 550 },
   ],
   UserData:null,
-  UserStatus:'статуса нет'
+  UserStatus:'статуса нет',
+  EditMode: true
+}
+
+let CHAINGE_EDIT_MODE = 'CHAINGE_EDIT_MODE'
+let EditModeActionCreator = () => {
+  return (
+    {
+      type: CHAINGE_EDIT_MODE,
+    }
+  )
 }
 
 let ADD_NEW_POST = 'ADD_NEW_POST'
@@ -81,6 +91,8 @@ let UserPageReduser = (state = initialState, action) => {
         return {...state, UserData: action.users}
       } else if (action.type === SET_USERS_SATATUS ) {
         return {...state, UserStatus: action.userStatus}
+      } else if (action.type === CHAINGE_EDIT_MODE) {
+        return {...state, EditMode : !state.EditMode}
       }
     return state
 }
@@ -89,3 +101,4 @@ export default UserPageReduser
 export {AddPostActionCreator}
 export {setUsersPageAC}
 export {setUsersStatusAC}
+export {EditModeActionCreator}
