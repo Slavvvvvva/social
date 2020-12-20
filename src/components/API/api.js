@@ -72,3 +72,9 @@ export const putFoto = (foto) => {
           }
     })
 }
+export const putUserData = (formData) => {
+    return instanse.put('profile', formData)
+        .then(response => {
+            return response
+        })
+}

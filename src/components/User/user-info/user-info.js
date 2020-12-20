@@ -6,6 +6,7 @@ import UserStatus from './user-status/user-status-hooks';
 import UserInfoEditModeForm from './user-edit-mode/user-edit-mode';
 
 const UserInfo = (props) => {
+    debugger
     if (!props.ConteinerFrends) {
         return (
             <Loader />
@@ -19,8 +20,11 @@ const UserInfo = (props) => {
     
     const UserInfoData = (formData) => {
         console.log(formData)
-        debugger
+        props.pushNewUserDataTC(formData)
       
+    }
+    const chaingeEditMode = () => {
+        props.EditModeActionCreator()
     }
 
 
@@ -32,7 +36,7 @@ const UserInfo = (props) => {
             </div>
             < div className={ui.info}>
                 <div>
-                    <button>Edit</button>
+                    <button onClick ={chaingeEditMode} >Edit</button>
                 </div>
 
                 {(!props.ContainerEditMode) ?

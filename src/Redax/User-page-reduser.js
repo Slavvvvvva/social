@@ -1,4 +1,4 @@
-import { getUserStatus, putFoto, putUserStatus } from "../components/API/api"
+import { getUserStatus, putFoto, putUserStatus, getUserProfile, putUserData } from "../components/API/api"
 
 let initialState = {
   PostsData: [
@@ -8,8 +8,8 @@ let initialState = {
     { id: 4, massege: "Научился переключатся между страницами", likeCounter: 500 },
     { id: 5, massege: "Я сделал страницу с сообщениями", likeCounter: 550 },
   ],
-  UserData:null,
-  UserStatus:'статуса нет',
+  UserData: null,
+  UserStatus: 'статуса нет',
   EditMode: true
 }
 
@@ -32,73 +32,92 @@ let AddPostActionCreator = (text) => {
   )
 }
 
-const SET_USERS_PAGE ="SET_USERS_PAGE"
+const SET_USERS_PAGE = "SET_USERS_PAGE"
 let setUsersPageAC = (users) => {
-    return(
-        {
-            type: SET_USERS_PAGE,
-            users:users
-        }
-    )
+  return (
+    {
+      type: SET_USERS_PAGE,
+      users: users
+    }
+  )
 }
-const SET_USERS_SATATUS ="SET_USERS_SATATUS "
+const SET_USERS_SATATUS = "SET_USERS_SATATUS "
 let setUsersStatusAC = (userStatus) => {
-    return(
-        {
-            type: SET_USERS_SATATUS  ,
-            userStatus: userStatus
-        }
-    )
+  return (
+    {
+      type: SET_USERS_SATATUS,
+      userStatus: userStatus
+    }
+  )
 }
 
 export const getUserStatusTC = (userId) => {
-  return(dispatch) => { 
-     getUserStatus(userId)
-         .then(responce => {
-             dispatch(setUsersStatusAC (responce.data))
-         })
- }
+  return (dispatch) => {
+    getUserStatus(userId)
+      .then(responce => {
+        dispatch(setUsersStatusAC(responce.data))
+      })
+  }
 }
 
 export const putUserStatusTC = (status) => {
-  return(dispatch) => { 
-     putUserStatus(status)
-         .then(responce => {
-          if (responce.data.resultCode === 0) dispatch(setUsersStatusAC(status))
-         })
- }
+  return (dispatch) => {
+    putUserStatus(status)
+      .then(responce => {
+        if (responce.data.resultCode === 0) dispatch(setUsersStatusAC(status))
+      })
+  }
+}
+export const pushNewUserDataTC = (formData) => {
+  return (dispatch) => {
+    putUserData(formData)
+      .then(responce => {
+        if (responce.data.resultCode === 0) dispatch(setUsersPageAC(formData))
+      })
+  }
+}
+
+export const getUserDataTC = (id) => {
+  return (dispatch) => {
+    getUserProfile(id)
+
+      .then(responce => {
+        debugger
+         dispatch(setUsersPageAC(responce.data))
+      })
+  }
 }
 
 export const UploadFileTC = (foto) => {
-  return(dispatch) => { 
-     putFoto(foto)
-         .then(responce => {
-           debugger
-          if (responce.data.resultCode === 0) dispatch(setUsersPageAC(responce.data.data))
-        })
- }
+  return (dispatch) => {
+    putFoto(foto)
+      .then(responce => {
+        debugger
+        if (responce.data.resultCode === 0) dispatch(setUsersPageAC(responce.data.data))
+      })
+  }
 }
 
 
 let UserPageReduser = (state = initialState, action) => {
-    if (action.type === ADD_NEW_POST) {
-        let newData = { id: "6", massege: action.post, counter: 5 }
-        let stateCopy = {...state}
-        stateCopy.PostsData =[...state.PostsData]
-        stateCopy.PostsData.push(newData)
-        return stateCopy
-      } else if ( action.type === SET_USERS_PAGE ) {
-        return {...state, UserData: action.users}
-      } else if (action.type === SET_USERS_SATATUS ) {
-        return {...state, UserStatus: action.userStatus}
-      } else if (action.type === CHAINGE_EDIT_MODE) {
-        return {...state, EditMode : !state.EditMode}
-      }
-    return state
+  if (action.type === ADD_NEW_POST) {
+    let newData = { id: "6", massege: action.post, counter: 5 }
+    let stateCopy = { ...state }
+    stateCopy.PostsData = [...state.PostsData]
+    stateCopy.PostsData.push(newData)
+    return stateCopy
+  } else if (action.type === SET_USERS_PAGE) {
+    return { ...state, UserData: action.users }
+  } else if (action.type === SET_USERS_SATATUS) {
+    return { ...state, UserStatus: action.userStatus }
+  } else if (action.type === CHAINGE_EDIT_MODE) {
+    return { ...state, EditMode: !state.EditMode }
+  }
+  return state
 }
 
 export default UserPageReduser
-export {AddPostActionCreator}
-export {setUsersPageAC}
-export {setUsersStatusAC}
-export {EditModeActionCreator}
+export { AddPostActionCreator }
+export { setUsersPageAC }
+export { setUsersStatusAC }
+export { EditModeActionCreator }

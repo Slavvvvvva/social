@@ -6,6 +6,11 @@ import {reqiredField} from '../../../../util/validation'
 
 
 const UserInfoEditMode = (props) => {
+    const chaingeEditMode = () => {
+        form.submit()
+        props.EditModeActionCreator() // переключает но не отправляет форму
+    }
+    
     
     return (
         <form onSubmit={props.handleSubmit}>
@@ -19,42 +24,42 @@ const UserInfoEditMode = (props) => {
             <Field type={'checkbox'} name={'lookingForAJob'}  component={Input}/> <p>Ищу роботу?</p>
         </div>
         <div>
-            <Field placeholder={props.ConteinerFrends.lookingForAJobDescription} name={'lookingForAJobDescription'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.lookingForAJobDescription} name={'lookingForAJobDescription'} type ={'textarea'}  component={Input} />
         </div>
         <p>Contacts</p>
         <div>
             <p>facebook</p>
-            <Field placeholder={props.ConteinerFrends.contacts.facebook} name={'contacts.facebook'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.facebook} name={'contacts.facebook'} type ={'textarea'}  component={Input}  />
         </div>
         <div>
             <p>website</p>
-            <Field placeholder={props.ConteinerFrends.contacts.website} name={'contacts.website'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.website} name={'contacts.website'} type ={'textarea'}  component={Input}  />
         </div>
         <div>
             <p>vk</p>
-            <Field placeholder={props.ConteinerFrends.contacts.vk} name={'contacts.vk'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.vk} name={'contacts.vk'} type ={'textarea'}  component={Input}  />
         </div>
         <div>
             <p>twitter</p>
-            <Field placeholder={props.ConteinerFrends.contacts.twitter} name={'contacts.twitter'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.twitter} name={'contacts.twitter'} type ={'textarea'}  component={Input}  />
         </div>
         <div>
             <p>instagram</p>
-            <Field placeholder={props.ConteinerFrends.contacts.instagram} name={'contacts.instagram'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.instagram} name={'contacts.instagram'} type ={'textarea'}  component={Input}  />
         </div>
         <div>
             <p>youtube</p>
-            <Field placeholder={props.ConteinerFrends.contacts.youtube} name={'contacts.youtube'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.youtube} name={'contacts.youtube'} type ={'textarea'}  component={Input}  />
         </div>
         <div>
             <p>github</p>
-            <Field placeholder={props.ConteinerFrends.contacts.github} name={'contacts.github'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.github} name={'contacts.github'} type ={'textarea'}  component={Input} />
         </div>
         <div>
             <p>mainLink</p>
-            <Field placeholder={props.ConteinerFrends.contacts.mainLink} name={'contacts.mainLink'} type ={'textarea'}  component={Input} validate ={[reqiredField]} />
+            <Field placeholder={props.ConteinerFrends.contacts.mainLink} name={'contacts.mainLink'} type ={'textarea'}  component={Input} />
         </div>
-        <button>Send</button>
+        <button onClick ={chaingeEditMode}>Send</button>
         
         {props.error && <div>{props.error}</div>}
     </form>
