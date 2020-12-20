@@ -16,7 +16,6 @@ const UserStatus = (props) =>{
     }
     const ChaingStatusOF = () => {
         setChainging(true)
-        debugger
         props.putUserStatusTC(value)
     }
     const statusChainge = (e) => {

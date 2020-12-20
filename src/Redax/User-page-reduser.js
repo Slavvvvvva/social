@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form"
 import { getUserStatus, putFoto, putUserStatus, getUserProfile, putUserData } from "../components/API/api"
 
 let initialState = {
@@ -72,7 +73,15 @@ export const pushNewUserDataTC = (formData) => {
   return (dispatch) => {
     putUserData(formData)
       .then(responce => {
-        if (responce.data.resultCode === 0) dispatch(setUsersPageAC(formData))
+        debugger
+        if (responce.data.resultCode === 0) {
+          dispatch(setUsersPageAC(formData))
+          dispatch(EditModeActionCreator())
+        }
+        else {
+          
+          dispatch(stopSubmit('EditMode', {'contacts': {'facebook': responce.data.messages[0]} } ))
+        }
       })
   }
 }

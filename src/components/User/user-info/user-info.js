@@ -20,7 +20,7 @@ const UserInfo = (props) => {
     
     const UserInfoData = (formData) => {
         props.pushNewUserDataTC(formData)
-        props.EditModeActionCreator()
+        //props.EditModeActionCreator()
       
     }
     const chaingeEditMode = () => {
