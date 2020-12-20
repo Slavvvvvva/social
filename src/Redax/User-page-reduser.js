@@ -10,7 +10,7 @@ let initialState = {
   ],
   UserData: null,
   UserStatus: 'статуса нет',
-  EditMode: true
+  EditMode: false
 }
 
 let CHAINGE_EDIT_MODE = 'CHAINGE_EDIT_MODE'

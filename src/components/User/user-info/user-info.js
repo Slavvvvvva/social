@@ -19,8 +19,8 @@ const UserInfo = (props) => {
     }
     
     const UserInfoData = (formData) => {
-        console.log(formData)
         props.pushNewUserDataTC(formData)
+        props.EditModeActionCreator()
       
     }
     const chaingeEditMode = () => {
@@ -43,7 +43,7 @@ const UserInfo = (props) => {
                     <>
                         <p className={ui.name}>{props.ConteinerFrends.fullName}</p>
                         <p>{props.ConteinerFrends.aboutMe}</p>
-                        <UserStatus {...props} />
+                        <UserStatus {...props}  />
                         <p>Поиск роботы :</p> {(props.ConteinerFrends.lookingForAJob) ? <p>Ищу</p> : <p>Не ищу</p>}
                         <p>Описание желаемой работы : </p>  <p> {props.ConteinerFrends.lookingForAJobDescription} </p>
                         <p>Контакты</p> : <p>facebook : {props.ConteinerFrends.contacts.facebook} </p>
@@ -55,7 +55,7 @@ const UserInfo = (props) => {
                         <p>github : {props.ConteinerFrends.contacts.github} </p>
                         <p>mainLink : {props.ConteinerFrends.contacts.mainLink} </p>
                     </> :
-                    <UserInfoEditModeForm onSubmit={UserInfoData}  {...props}/>
+                    <UserInfoEditModeForm onSubmit={UserInfoData}  {...props} initialValues = {props.ConteinerFrends}/>
                 }
             </div>
         </div>
