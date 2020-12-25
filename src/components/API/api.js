@@ -51,8 +51,8 @@ export const putUserStatus = (usearStatus) => {
             return response
         })
 }
-export const Login = (login, password , rememberMe) => {
-    return instanse.post('/auth/login', {email:login, password: password, rememberMe: rememberMe})
+export const Login = (login, password , rememberMe, captcha) => {
+    return instanse.post('/auth/login', {email:login, password: password, rememberMe: rememberMe, captcha: captcha})
         .then(response => {
             return response
         })
@@ -76,5 +76,11 @@ export const putUserData = (formData) => {
     return instanse.put('profile', formData)
         .then(response => {
             return response
+        })
+}
+export const getCapcha = () => {
+    return instanse.get ('security/get-captcha-url')
+        .then(response => {
+            return response.data
         })
 }

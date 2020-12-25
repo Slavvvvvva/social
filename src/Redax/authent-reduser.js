@@ -1,11 +1,12 @@
 import { stopSubmit } from 'redux-form'
-import {getIsLogginned, Login, LogOut} from '../components/API/api'
+import {getIsLogginned, Login, LogOut, getCapcha} from '../components/API/api'
 
 let initialState = {
     id: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
+    captchaUrl: null
 }
  let SET_USER_DATA = 'SET_USER_DATA'
  let authUserDataAC = (authData) => {
@@ -15,6 +16,16 @@ let initialState = {
             authData: authData
         }
     )
+}
+
+let SET_CAPTCHA = 'SET_CAPTCHA'
+let setCaptchaAC = (captcha) => {
+   return(
+       {
+           type: SET_CAPTCHA,
+           captcha: captcha
+       }
+   )
 }
 
 let DEL_USER_DATA = 'DEL_USER_DATA'
@@ -39,15 +50,27 @@ export const getIsLogginedTC = () => {
         }) 
     }
 }
-export const LoginTC = (login, password, rememberMe) => {
+export const getCaptchaTC = () => {
     return(dispatch) => {
-        Login(login, password, rememberMe)
+        return getCapcha()
+        .then(responce => {
+            
+            dispatch(setCaptchaAC(responce.url))
+            
+        }) 
+    }
+}
+export const LoginTC = (login, password, rememberMe, captcha) => {
+    return(dispatch) => {
+        Login(login, password, rememberMe, captcha)
         .then(responce => {
             if (responce.data.resultCode === 0){
-                debugger
             dispatch( getIsLogginedTC())
             } else {
+                debugger
+                if (responce.data.resultCode === 10) dispatch(getCaptchaTC())
                 dispatch(stopSubmit('Login', {_error: responce.data.messages}))
+                
             }
         }) 
     }
@@ -69,7 +92,8 @@ let AuthPageReduser = (state = initialState, action) => {
         
         case SET_USER_DATA : return {...state, ...action.authData, isAuth: true }
         
-        case DEL_USER_DATA : return {...state, id: null, email: null, login: null, isAuth: false}
+        case DEL_USER_DATA : return {...state, id: null, email: null, login: null, isAuth: false, captchaUrl: null}
+        case SET_CAPTCHA : return {...state, captchaUrl: action.captcha}
         default : return state
     }
 }

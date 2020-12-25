@@ -6,11 +6,6 @@ import { reqiredField } from '../../../../util/validation'
 
 
 const UserInfoEditMode = (props) => {
-    /* const chaingeEditMode = () => {
-        form.submit()
-        props.EditModeActionCreator() // переключает но не отправляет форму
-    } */
-
 
     return (
         <form onSubmit={props.handleSubmit}>
