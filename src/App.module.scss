@@ -1,23 +1,20 @@
-.body{
+.body {
     margin: 0 auto;
     width: 100%;
-    max-width: 1700px;
-    background-color: rgb(237, 238, 237);
-}
-.head{ 
-     background-color: rgb(230, 163, 163);
-     height: 150px;
-     display: flex;
-     justify-content: center;
-}
-.foot{
-    background-color:rgb(202, 135, 112);
-    height: 100px;
-}
-@media (min-width: 992px){
-    .body{
-        width: 90%
+    height: 100vh;
+    max-width: 1920px;
+    background-color:#2F2F31;
+    display: flex;
+    font-family: 'Martel Sans', sans-serif;
+    color: white;
+    .head {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
+        background: #191A1D;
+        border-radius: 20px;
+        margin: 10px 10px;
     }
-}
-
+}  
 

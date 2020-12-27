@@ -1,0 +1,26 @@
+@mixin nawigIcon {
+    background-repeat: no-repeat;
+    background-position: 20px -1px;
+}
+
+.wrapper{
+    background-image: url("../Img/icons/power.svg");
+    @include nawigIcon;
+    margin-bottom: 20px;
+    height:30px;
+}
+
+.login{
+    text-decoration: none;
+    color: white;
+    padding-top: 1px;
+    padding-left: 50px;
+    padding-right: 70px;
+    &:hover{
+        text-decoration: none;
+        color: white;
+        background-image: url("../Img/icons/Rectangle.svg");
+        background-repeat: no-repeat;
+        background-position: 5px -10px;
+    }
+}

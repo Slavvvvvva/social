@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from '../Img/zynga.svg'
-import h from './h.module.scss'
+import h from './header.module.scss'
+
 
 
 let Header = (props) =>{
@@ -10,11 +10,9 @@ let Header = (props) =>{
         props.LogautTC()
     }
     return (
-        <>
-         {props.ConteinerAuthUserData.isAuth? <button onClick = {Logaut}>LogOut</button>  : <NavLink to="/login" > Залогироватся</NavLink> } 
-         <img className = {h.logo} src ={logo} alt="logo company"/>
-         
-        </>
+        <div className = {h.wrapper}>
+         {props.ConteinerAuthUserData.isAuth? <p className = {h.login} onClick = {Logaut}>LogOut</p>  : <NavLink className = {h.login}  to="/login" >LogIn </NavLink> } 
+        </div>
     )
 }
 

@@ -1,32 +1,47 @@
-.navig {
-    background-color:rgb(237, 238, 237);
-    display: flex;
-    max-width: 200px;
-    min-width: 200px;
-    margin-left:15px;
+@mixin nawigIcon {
+    background-repeat: no-repeat;
+    background-position: 20px -2px;
 }
-.list_groop{
-    width: 300px;
-    margin-left: -15px;
-    display: flex;
-    height: 100%;
-}
-.last{
-    flex:1;
-}
-.list{
-    display: inline;
-    box-sizing: border-box;
-    padding:0;
-    width: 100%;
-    a {
-        display: block;
-        outline: none;
-        color: black;
-        text-decoration: none;
-        padding: 12px 20px;
-     }
-}
-.activ_link{
-    background-color: rgba(103, 103, 255, 0.253);
+
+.navig{
+    ul{
+        font-family: 'Martel Sans', sans-serif;
+        list-style-type: none;
+        padding: 0;
+        margin-top: 290px;
+        .home{
+            background-image: url("../Img/icons/home.svg");
+            @include nawigIcon;
+        }
+        .friends{
+            background-image: url("../Img/icons/person.svg");
+            @include nawigIcon;
+        }
+        .messeges{
+            background-image: url("../Img/icons/Chat.svg");
+            @include nawigIcon;
+        }
+        .news{
+            background-image: url("../Img/icons/bell.svg");
+            @include nawigIcon;
+        }
+        .settings{
+            background-image: url("../Img/icons/settings.svg");
+            @include nawigIcon;
+        }
+        li{
+            height: 40px;
+            a{
+                text-decoration: none;
+                color : white;
+                padding-left: 50px;
+                padding-right: 70px;
+                &:hover{
+                    background-image: url("../Img/icons/Rectangle.svg");
+                    background-repeat: no-repeat;
+                    background-position: 5px -13px;
+                }
+            }
+        }
+    }
 }
