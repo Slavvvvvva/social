@@ -11,6 +11,7 @@ import { initializedTC } from './Redax/app-reduser'
 import { connect } from 'react-redux'
 import { compose } from 'redux';
 import Loader from './components/Loader/loader';
+import UserPortret from './components/UserPortret/user-portret';
 const FrendsContainer = lazy(() => import('./components/Frends/frendes-container'))
 
 class App extends React.Component {
@@ -23,8 +24,11 @@ class App extends React.Component {
          <BrowserRouter>
             <div className={s.body}>
                <div className={s.head}>
-                   <Nawigation />
-                   <HeaderContainer /> 
+                  <div className={s.head_wrapper}>
+                     <UserPortret/>
+                     <Nawigation />
+                  </div>
+                  <HeaderContainer /> 
                </div>
                <div className={s.content}>
                   <Route path='/meseges' render={() => <ChatContainer />} />

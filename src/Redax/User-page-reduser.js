@@ -89,9 +89,7 @@ export const pushNewUserDataTC = (formData) => {
 export const getUserDataTC = (id) => {
   return (dispatch) => {
     getUserProfile(id)
-
       .then(responce => {
-        debugger
          dispatch(setUsersPageAC(responce.data))
       })
   }
