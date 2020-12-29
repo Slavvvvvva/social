@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from 'reactstrap'
 import avatar from '../Img/982da289bae6d7738358d8fec285acc8.jpg'
+import classNames from 'classnames/bind';
 import f from './f.module.scss'
 import Loader from '../Loader/loader'
 import { NavLink } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-
+let cx = classNames.bind(f);
 
 const Frends = React.memo((props) => {
 
@@ -40,23 +40,20 @@ const Frends = React.memo((props) => {
         let TogleFollouServer = () => {
             item.followed ? Delete() : Post()
         }
-
+        let className = cx({
+            followed: item.followed,
+          });
+ 
         return (
-            <div className={f.frends} >
-                <div className={f.frends_logo}>
+                <div className={f.frends_item}>
                     <NavLink to={link} >
                         <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
                     </NavLink>
-
-                    <Button onClick={TogleFollouServer} color={item.followed ? "primary" : "danger"} disabled={props.ContainerDisabledButton.some(i => i === item.id)}>{item.followed ? "follow" : "unfollow"}</Button>
-                </div>
-                <div className={f.frends_description}>
-                    <h4>{item.name}</h4>
-                    <p>{item.status ? item.status : "Статуса нет"}</p>
-                    <p> Страны нет </p>
-                    <p> Адркса нет </p>
-                </div>
-            </div>
+                    <div className={f.frends_description}>
+                        <h4>{item.name}</h4>
+                    </div>
+                    <button className= {className} onClick={TogleFollouServer} disabled={props.ContainerDisabledButton.some(i => i === item.id)}>{item.followed ? "Follow" : "Following"}</button>
+                </div> 
         )
     })
 
@@ -72,10 +69,16 @@ const Frends = React.memo((props) => {
         }))
     }
 
+     
+
 
     const ChaingePageButtons = Buutton.map((item) => {
+        let className = cx({
+            showUsers: true,
+            activeButton: item.active 
+          });
         return (
-            <Button outline={item.active ? false : true} color="info" onClick={() => ShowUsers(item.id)} className={f.show_users} id={item.id} >  {item.id}  </Button>
+            <button className={className} onClick={() => ShowUsers(item.id)} id={item.id} >  {item.id}  </button>
         )
     })
 
@@ -89,21 +92,29 @@ const Frends = React.memo((props) => {
             return { ...e, id : e.id+5, active: (e.id+5 === lastActivePagie)? true: false}
         }))
     }
+    let className = cx({
+        arrouButton: true, 
+      });
 
 
     if (!props.ContainerAuthData) return <Redirect to={'/login'} />
 
     return (
-
-        <div className={f.frends_wrapper}>
+        <>
             <div className={f.show_users_wrapper}>
-                { (Buutton[0].id > 1) ?  <Button onClick = {back}> Назад </Button> : null}
+                { (Buutton[0].id > 1) ?  <button className= {className} onClick = {back}> {`<<`} </button> : null}
                 {ChaingePageButtons}
-                <Button  onClick = {forword}> Вперед </Button>
+                <button className= {className}   onClick = {forword}> {`>>`} </button>
             </div>
-            {props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
-            {FrendItem}
-        </div>
+            
+                <div className={f.frends_wrapper}>
+                    <span>Mutual followers</span>
+                    {props.ContainerShowLoader ? <div className={f.loader}> <Loader /> </div> : null}
+                    {FrendItem}
+                </div>
+            
+            
+        </>
     )
 })
 

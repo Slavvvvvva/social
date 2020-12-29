@@ -1,46 +1,102 @@
-.avatar{
-    width: 100px;
-    height: auto;
-    border-radius: 100%;
+
+@mixin buttonStile {
+    width: 80px;
+    height: 24px;
+    left: 28px;
+    top: 116px;
+    background: #5458f7;
+    border: none;
+    border-radius: 48px;
+    border-color: none;
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    font-family: "Martel Sans", sans-serif;
     margin: 10px;
+    &:focus{
+        outline:none;
+    }
 }
-.frends{
+
+.frends_wrapper {
+    min-width: 80%;
+    margin: 30px 20px 30px 10px;
+    background: #191a1d;
+    border-radius: 20px;
+    filter: drop-shadow(0px 24px 64px rgba(45, 48, 58, 0.06));
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    justify-content: space-around;
+    span {
+        width: 100%;
+        font-size: 16px;
+        line-height: 20px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 16px;
+    }
 }
-.frends_logo{
+.frends_item {
     display: flex;
     flex-direction: column;
-}
-.frends_description{
-    margin: 10px;
-    p,h4{
-        text-align: center;
-    }
-    
-}
-.show_users_wrapper{
-    display: flex;
-    width: auto;
-    justify-content: start;
-    position: relative;
-    .show_users{
-        margin: 0 auto;
+    align-items: center;
+    width: 136px;
+    height: 160px;
+    background: #2f2f31;
+    border: 1px solid rgba(149, 151, 161, 0.2);
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    padding: -16px;
+    a {
         margin-top: 20px;
-        
-}
+        margin-bottom: 6px;
     }
-.frends_wrapper{
-    flex-grow: 1;
+    .frends_description {
+        h4 {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+    button {
+        @include buttonStile;
+    }
+    .followed {
+        @include buttonStile;
+        background:rgba(255, 255, 255, 0.2);
+    }
 }
-.loader{
-    width:300px;
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.show_users_wrapper {
+    margin-top: 20px;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    .showUsers {
+        @include buttonStile;
+        background:rgba(255, 255, 255, 0.205);
+    }
+    .activeButton {
+        @include buttonStile;
+    }
+}
+.arrouButton{
+    @include buttonStile;
+    width: 30px;
+}
+
+.loader {
+    width: 300px;
     height: 300px;
     position: absolute;
     left: 50%;
     margin-top: 150px;
     margin-left: -150px;
-
 }
