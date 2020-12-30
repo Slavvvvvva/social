@@ -32,7 +32,6 @@ const UserContainer = (props) => {
         if(!userId){
             userId = props.ContainerAuthData.id   
         }
-        debugger
         props.getUserDataTC(userId) 
     },[props.match.params.userId, props.ContainerAuthData.id])
 

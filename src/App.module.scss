@@ -2,6 +2,7 @@
     margin: 0 auto;
     width: 100%;
     height: 100vh;
+    overflow:auto;
     max-width: 1920px;
     background-color:#2F2F31;
     display: flex;
@@ -9,13 +10,14 @@
     font-family: 'Martel Sans', sans-serif;
     color: white;
     .head {
+        min-height: 540px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: auto;
         background: #191A1D;
         border-radius: 20px;
         margin: 10px 10px;
+        
         .head_wrapper{
             display: flex;
             flex-direction: column;
@@ -29,6 +31,7 @@
         flex-direction: column;
         align-items: center;
         width:90%;
+        
     }
 }  
 

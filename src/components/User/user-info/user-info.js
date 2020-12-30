@@ -6,7 +6,6 @@ import UserStatus from './user-status/user-status-hooks';
 import UserInfoEditModeForm from './user-edit-mode/user-edit-mode';
 
 const UserInfo = (props) => {
-    debugger
     if (!props.ConteinerFrends) {
         return (
             <Loader />
@@ -17,11 +16,11 @@ const UserInfo = (props) => {
         let fotoFile = e.target.files[0]
         props.UploadFileTC(fotoFile)
     }
-    
+
     const UserInfoData = (formData) => {
         props.pushNewUserDataTC(formData)
         //props.EditModeActionCreator()
-      
+
     }
     const chaingeEditMode = () => {
         props.EditModeActionCreator()
@@ -32,18 +31,27 @@ const UserInfo = (props) => {
         <div className={ui.space}>
             <div className={ui.avatar}>
                 <img src={props.ConteinerFrends.photos.large || avatar} alt="avatar" />
-                {!!props.match.params.userId || <input type='file' onChange={LoadPhoto} />}
+                {!!props.match.params.userId || 
+                <> 
+                     <div className = { ui.inputWrapper}>
+                    <input type='file' id = "input_file" onChange={LoadPhoto} />
+                    <label for = "input_file"></label>
+                </div>
+                <div className = {ui.buttonWrapper}>
+                    <button onClick={chaingeEditMode} id = "button_chainge_suer_info" >Edit</button>
+                    <label for ="button_chainge_suer_info"></label>
+                </div>
+                </>
+                }
+
             </div>
             < div className={ui.info}>
-                <div>
-                    <button onClick ={chaingeEditMode} >Edit</button>
-                </div>
-
+               
                 {(!props.ContainerEditMode) ?
-                    <>
+                    <div className={ui.infoWrapper}>
                         <p className={ui.name}>{props.ConteinerFrends.fullName}</p>
                         <p>{props.ConteinerFrends.aboutMe}</p>
-                        <UserStatus {...props}  />
+                        <UserStatus {...props} />
                         <p>Поиск роботы :</p> {(props.ConteinerFrends.lookingForAJob) ? <p>Ищу</p> : <p>Не ищу</p>}
                         <p>Описание желаемой работы : </p>  <p> {props.ConteinerFrends.lookingForAJobDescription} </p>
                         <p>Контакты</p> : <p>facebook : {props.ConteinerFrends.contacts.facebook} </p>
@@ -54,8 +62,8 @@ const UserInfo = (props) => {
                         <p>youtube : {props.ConteinerFrends.contacts.youtube} </p>
                         <p>github : {props.ConteinerFrends.contacts.github} </p>
                         <p>mainLink : {props.ConteinerFrends.contacts.mainLink} </p>
-                    </> :
-                    <UserInfoEditModeForm onSubmit={UserInfoData}  {...props} initialValues = {props.ConteinerFrends}/>
+                    </div> :
+                    <UserInfoEditModeForm onSubmit={UserInfoData}  {...props} initialValues={props.ConteinerFrends} />
                 }
             </div>
         </div>

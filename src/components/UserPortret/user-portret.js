@@ -10,7 +10,6 @@ const UserPortret = (props) => {
    
     useEffect( () => {
         let userId = props.AuthData.id
-        debugger
         if(userId){
             props.getUserDataTC(userId)  
         }

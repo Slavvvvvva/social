@@ -13,7 +13,6 @@ const Coments = (props) => {
         )
     })
 
-    const Textpost = React.createRef();
     const AddPost = (formData) => {
         console.log(formData)
         props.AddPostContainer(formData.NevPost)

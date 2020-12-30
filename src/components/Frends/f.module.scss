@@ -16,6 +16,9 @@
     &:focus{
         outline:none;
     }
+    &:disabled{
+        opacity: 0.5;
+    }
 }
 
 .frends_wrapper {
