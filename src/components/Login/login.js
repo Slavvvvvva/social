@@ -32,7 +32,9 @@ const Login = (props) => {
         <form className={l.form} onSubmit={props.handleSubmit}>
             <Field className={l.formfield} placeholder={'Login'} name={'login'} component={Input} validate={[reqiredField]} />
             <Field className={l.formfield} placeholder={'Password'} name={'Password'} type={'password'} component={Input} validate={[reqiredField]} />
-            <Field type={'checkbox'} name={'rememberMe'} component={Input} /> <p>remember me</p>
+            <div>
+                <Field type={'checkbox'} name={'rememberMe'} component={Input} value = {'fjdkjfkd'} /> <p>Remember me</p>
+            </div>
             {props.captchaUrl && <Field placeholder={'Captcha'} name={'Captcha'} component={Input} validate={[reqiredField]} />}
             {props.error && <div>{props.error}</div>}
             <button>Login</button>
