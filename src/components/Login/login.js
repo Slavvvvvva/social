@@ -6,6 +6,7 @@ import { LoginTC } from '../../Redax/authent-reduser'
 import { Input } from '../Loader/textarea'
 import { reqiredField } from '../../util/validation'
 import { Redirect } from 'react-router-dom'
+import l from './l.module.scss'
 
 const LoginForm = (props) => {
     const LoginData = (formData) => {
@@ -15,37 +16,27 @@ const LoginForm = (props) => {
         return <Redirect to={'/myprofile'} />
     }
     return (
-        <>
+        <div className={l.formWrapper}>
             <h1>Login page</h1>
             <LoginReduxForm onSubmit={LoginData} {...props} />
             <div>
                 {props.captchaUrl && <img src={props.captchaUrl} alt="captcha" />}
             </div>
 
-        </>
+        </div>
     )
 }
 
 const Login = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field placeholder={'Login'} name={'login'} component={Input} validate={[reqiredField]} />
-            </div>
-            <div>
-                <Field placeholder={'Password'} name={'Password'} type={'password'} component={Input} validate={[reqiredField]} />
-            </div>
-            <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={Input} /> <p>remember me</p>
-            </div>
-            <div> 
-                {props.captchaUrl && <Field placeholder={'Captcha'} name={'Captcha'} component={Input} validate={[reqiredField]} />}
-            </div>
+        <form className={l.form} onSubmit={props.handleSubmit}>
+            <Field className={l.formfield} placeholder={'Login'} name={'login'} component={Input} validate={[reqiredField]} />
+            <Field className={l.formfield} placeholder={'Password'} name={'Password'} type={'password'} component={Input} validate={[reqiredField]} />
+            <Field type={'checkbox'} name={'rememberMe'} component={Input} /> <p>remember me</p>
+            {props.captchaUrl && <Field placeholder={'Captcha'} name={'Captcha'} component={Input} validate={[reqiredField]} />}
             {props.error && <div>{props.error}</div>}
-            <div>
+            <button>Login</button>
 
-                <button>Login</button>
-            </div>
         </form>
     )
 }

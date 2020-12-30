@@ -1,0 +1,42 @@
+
+@mixin buttonStile {
+    width: 80px;
+    height: 24px;
+    left: 28px;
+    top: 116px;
+    background: #5458f7;
+    border: none;
+    border-radius: 48px;
+    border-color: none;
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    font-family: "Martel Sans", sans-serif;
+    margin: 10px;
+    &:focus{
+        outline:none;
+    }
+}
+.formWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 320px;
+    filter: drop-shadow(0px 24px 64px rgba(45, 48, 58, 0.06));
+    background: #191a1d;
+    border-radius: 20px;
+}
+.formfield{
+        width: 288px;
+        height: 32px;
+        margin-top: 20px;
+        background-color:#2F2F31 !important;
+        border:none;
+        border-radius: 8px;
+        color:white;
+
+        &:focus{
+            outline:none;
+        }
+
+}
