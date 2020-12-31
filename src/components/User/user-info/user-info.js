@@ -1,22 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ui from './ui.module.scss';
 import avatar from '../../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import Loader from '../../Loader/loader';
 import UserStatus from './user-status/user-status-hooks';
 import UserInfoEditModeForm from './user-edit-mode/user-edit-mode';
 
-const UserInfo = (props) => {
-    if (!props.ConteinerFrends) {
-        return (
-            <Loader />
-        )
-    }
+const UserInfo = React.memo((props) => {
+    
+    
 
     const LoadPhoto = (e) => {
         let fotoFile = e.target.files[0]
         props.UploadFileTC(fotoFile)
     }
-
+    
     const UserInfoData = (formData) => {
         props.pushNewUserDataTC(formData)
         //props.EditModeActionCreator()
@@ -24,6 +21,12 @@ const UserInfo = (props) => {
     }
     const chaingeEditMode = () => {
         props.EditModeActionCreator()
+    }
+
+    if (!props.ConteinerFrends) {
+        return (
+            <Loader />
+        )
     }
 
 
@@ -68,5 +71,5 @@ const UserInfo = (props) => {
             </div>
         </div>
     )
-}
+})
 export default UserInfo;

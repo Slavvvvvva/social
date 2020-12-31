@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { stopSubmit } from "redux-form"
 import { getUserStatus, putFoto, putUserStatus, getUserProfile, putUserData } from "../components/API/api"
 
@@ -39,6 +40,15 @@ let setUsersPageAC = (users) => {
     {
       type: SET_USERS_PAGE,
       users: users
+    }
+  )
+}
+const SET_USERS_FOTO = "SET_USERS_FOTO"
+let setUsersFotoAC = (foto) => {
+  return (
+    {
+      type: SET_USERS_FOTO,
+      foto: foto
     }
   )
 }
@@ -100,7 +110,7 @@ export const UploadFileTC = (foto) => {
     putFoto(foto)
       .then(responce => {
         debugger
-        if (responce.data.resultCode === 0) dispatch(setUsersPageAC(responce.data.data))
+        if (responce.data.resultCode === 0) dispatch(setUsersFotoAC(responce.data.data))
       })
   }
 }
@@ -119,6 +129,8 @@ let UserPageReduser = (state = initialState, action) => {
     return { ...state, UserStatus: action.userStatus }
   } else if (action.type === CHAINGE_EDIT_MODE) {
     return { ...state, EditMode: !state.EditMode }
+  } else if (action.type === SET_USERS_FOTO){
+    return {...state, UserData: {...state.UserData, photos: action.foto.photos } }
   }
   return state
 }
