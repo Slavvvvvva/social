@@ -1,4 +1,8 @@
-.comments{
-    margin-top: 40px;
+.comments {
+    display: flex;
+    flex-direction: column;
+    background: #191a1d;
+    width: 320px;
+    border-radius: 20px;
+    margin: 20px;
 }
-    

@@ -29,9 +29,8 @@ const UserStatus = (props) =>{
                     <div>
                         <input onChange={statusChainge} autoFocus onBlur={ChaingStatusOF} value={value} />
                     </div> :
-                    <div>
                         <p onDoubleClick={ChaingStatusON}> {props.ContainearUserStatus || 'статуса нет'}</p>
-                    </div>}
+                    }
         </>
     )
 }

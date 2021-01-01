@@ -21,11 +21,8 @@ const Coments = (props) => {
         <div className={c.comments}>
             <div className={c.coment_add}>
                 <AddPostReduxForm onSubmit={AddPost} />
-                <br />
             </div>
             {Posts}
-            <br />
-            <br />
         </div>
     )
 }

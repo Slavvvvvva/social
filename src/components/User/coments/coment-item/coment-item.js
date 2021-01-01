@@ -6,10 +6,10 @@ const ComentItem = (props) => {
     return (
         <div className = {ci.coment_item}> 
             <img className = {ci.mini_logo} src ={avatar} alt = "mini avatar"/>
-            <div>
-                 <p>{props.comentText}</p>
+            <div className= {ci.comentText}>
+                 <p>{props.comentText} <div> {props.likeCounter} likes</div></p> 
             </div>
-            <div> {props.likeCounter} likes</div>
+            
         </div>
     )
 }
