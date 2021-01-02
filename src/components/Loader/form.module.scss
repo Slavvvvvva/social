@@ -1,11 +1,43 @@
+.textArea {
+        text-align: center;
+    textarea {
+        width: 288px;
+        background-color: #2F2F31 !important;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        margin: 16px;
+        resize: none;
+        padding: 10px;
+        overflow: hidden;
 
-.formControl{
-    display:flex;
+        &:focus {
+            outline: none;
+        }
+    }
+
+}
+
+.formControl {
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
-    span{
+    input{
+        width: 288px;
+        height: 32px;
+        background-color:#2F2F31 !important;
+        border:none;
+        border-radius: 8px;
+        color:white;
+        margin: 10px;
+        padding: 10px;
+        &:focus{
+            outline:none;
+        }
+    }
+    span {
         margin-top: 10px;
     }
-    
+
 }

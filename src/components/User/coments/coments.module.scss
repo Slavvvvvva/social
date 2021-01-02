@@ -1,3 +1,21 @@
+@mixin buttonStile {
+    width: 288px;
+    height: 42px;
+    background: #5458f7;
+    border: none;
+    border-radius: 40px;
+    border-color: none;
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    font-family: "Martel Sans", sans-serif;
+    &:focus{
+        outline:none;
+    }
+    &:disabled{
+        opacity: 0.5;
+    }
+}
 .comments {
     display: flex;
     flex-direction: column;
@@ -5,4 +23,10 @@
     width: 320px;
     border-radius: 20px;
     margin: 20px;
+}
+.button{
+    button{
+        @include buttonStile;
+        margin: 16px;
+    }
 }

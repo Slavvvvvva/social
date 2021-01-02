@@ -10,7 +10,7 @@ if (value && value.length > len) return (
 let reqiredField = (value) => {
     if (value) return undefined
     return (
-        <span className = {v.span}> Reqired field  </span>
+        <p className = {v.span}> Reqired field  </p>
     )
 }
 export {reqiredField}

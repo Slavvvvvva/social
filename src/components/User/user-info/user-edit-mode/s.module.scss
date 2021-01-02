@@ -1,0 +1,30 @@
+.form {
+    h3{
+        margin: 20px 0 20px 0;
+    }
+    div{
+        span{
+            margin-bottom: 20px;
+        }
+    }
+    button {
+        width: 288px;
+        height: 42px;
+        background: #5458f7;
+        border: none;
+        border-radius: 40px;
+        border-color: none;
+        font-size: 14px;
+        line-height: 18px;
+        color: white;
+        font-family: "Martel Sans", sans-serif;
+        margin: 16px;
+        &:focus {
+            outline: none;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
+}
