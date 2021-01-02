@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Field } from 'redux-form'
-import { Input } from '../../../Loader/textarea'
+import { ChackBox, Input } from '../../../Loader/textarea'
 import { reqiredField } from '../../../../util/validation'
 import s from './s.module.scss'
 
@@ -16,7 +16,7 @@ const UserInfoEditMode = (props) => {
             <label for = 'aboutMe'> About Me </label>
             <Field placeholder={props.ConteinerFrends.aboutMe} id="aboutMe" name={'aboutMe'} type={'textarea'} component={Input} validate={[reqiredField]} />
                 <div>   
-                  <Field type={'checkbox'} name={'lookingForAJob'} component={Input} />
+                  <Field type={'checkbox'} name={'lookingForAJob'} component={ChackBox} />
                   <p> Locking for a job ?</p>
                 </div>
             <label for = 'lookingForAJobDescription'> Job Description </label>

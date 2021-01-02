@@ -15,7 +15,16 @@ export const Input = ({input, meta, ...props}) => {
     return (
         <div className = {s.formControl+' '+ s.error}>
             <input {...input} {...props}/>
-            {meta.error && meta.touched && <span>{meta.error}</span>}
+            {meta.error && meta.touched && meta.error}
+        </div>
+    )
+}
+export const ChackBox = ({input, meta, ...props}) => {
+    
+    return (
+        <div className = {s.ChackControl+' '+ s.error}>
+            <input type ='chackbox' {...input} {...props}/>
+            {meta.error && meta.touched && meta.error}
         </div>
     )
 }

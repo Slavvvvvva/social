@@ -8,7 +8,8 @@ const User = (props) => {
     return (
         <div className = {u.user}>
             <UserInfo {...props}/>
-            <ComentsContainer /> 
+            {!!props.match.params.userId ||
+            <ComentsContainer /> }
         </div>
     )
 }  

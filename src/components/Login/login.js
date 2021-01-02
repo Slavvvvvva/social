@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { LoginTC } from '../../Redax/authent-reduser'
-import { Input } from '../Loader/textarea'
+import { ChackBox, Input } from '../Loader/textarea'
 import { reqiredField } from '../../util/validation'
 import { Redirect } from 'react-router-dom'
 import l from './l.module.scss'
@@ -30,10 +30,10 @@ const LoginForm = (props) => {
 const Login = (props) => {
     return (
         <form className={l.form} onSubmit={props.handleSubmit}>
-            <Field className={l.formfield} placeholder={'Login'} name={'login'} component={Input} validate={[reqiredField]} />
-            <Field className={l.formfield} placeholder={'Password'} name={'Password'} type={'password'} component={Input} validate={[reqiredField]} />
+            <Field  placeholder={'Login'} name={'login'} component={Input} validate={[reqiredField]} />
+            <Field  placeholder={'Password'} name={'Password'} type={'password'} component={Input} validate={[reqiredField]} />
             <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={Input} value = {'fjdkjfkd'} /> <p>Remember me</p>
+                <Field type={'checkbox'} name={'rememberMe'} component={ChackBox} value = {'fjdkjfkd'} /> <p>Remember me</p>
             </div>
             {props.captchaUrl && <Field placeholder={'Captcha'} name={'Captcha'} component={Input} validate={[reqiredField]} />}
             {props.error && <div>{props.error}</div>}
