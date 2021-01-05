@@ -1,16 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ListGroupItem, Badge } from 'reactstrap';
 import u from './dialog-item.module.scss';
+import uncnown from '../../Img/icons/uncnown.png'
 
 const DialogItem = (props) => {
     return (
-        <ListGroupItem color="info" className={u.list} >
-            <NavLink to={`/meseges/${props.id}`} activeClassName={u.activ} >
-                 {props.dialog_name}  
-                 <Badge pill>{props.massege_counter}</Badge>
+        <div className={u.list} >
+            <NavLink to={`/meseges/${props.id}`} >
+                <img src={uncnown} width="40px" alt='uncnown user icon' />
+                
+                    {props.dialog_name}
+                
             </NavLink>
-        </ListGroupItem>
+        </div>
     )
 }
 
