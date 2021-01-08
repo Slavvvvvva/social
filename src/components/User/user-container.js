@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import {setUsersPageAC, setUsersStatusAC, EditModeActionCreator, getUserStatusTC,putUserStatusTC,pushNewUserDataTC ,UploadFileTC, getUserDataTC } from '../../Redax/User-page-reduser'
 import { withRouter } from 'react-router-dom'
 import { getAuthData, getFrends, getUserStatus, showLoader, getEditMode} from '../../Redax/users-selector';
+import { compose } from 'redux';
+import { withAuthRedireact } from '../HOC/withAuth-redirect';
 
 /* class UserContainer  extends React.Component{
     componentDidMount() {
@@ -51,6 +53,14 @@ let mapStateToProps = (state) => {
 }
 
 
-let UrlDataUserContainer =  withRouter(UserContainer)
-export default connect(mapStateToProps,{setUsersPageAC, setUsersStatusAC, EditModeActionCreator,pushNewUserDataTC, getUserStatusTC,putUserStatusTC, UploadFileTC,getUserDataTC})(UrlDataUserContainer)
+
+export default compose(
+   
+    withRouter,
+    //withAuthRedireact,
+    connect(mapStateToProps,{setUsersPageAC, setUsersStatusAC,
+        EditModeActionCreator,pushNewUserDataTC,
+        getUserStatusTC,putUserStatusTC,
+        UploadFileTC,getUserDataTC}),
+)(UserContainer)
 

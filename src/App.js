@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import s from './App.module.scss';
 import HeaderContainer from './components/Header/headerContainer';
 import Nawigation from './components/Navigation/nawigation';
@@ -43,7 +43,7 @@ class App extends React.Component {
                      <Route path='/myprofile/:userId?' render={() => <UserContainer />} />
                      <Route path='/frends' render={() => <React.Suspense fallback={<Loader />}>  <FrendsContainer /> </React.Suspense>} />
                      <Route path='/login' render={() => <Login />} />
-                     <Route exact path='/' render={() => <Login />} />
+                     <Route exact path='/' render={() =>  <Redirect to = {'/login'} /> } />
                      <Route path='/*' render={() => <h1> 404 page not found </h1>} />
                   </Switch>
 
