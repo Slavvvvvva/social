@@ -39,8 +39,8 @@ class App extends React.Component {
                </div>
                <div className={s.content}>
                   <Switch>
-                     <Route path='/meseges' render={() => <ChatContainer />} />
                      <Route path='/myprofile/:userId?' render={() => <UserContainer />} />
+                     <Route path='/meseges' render={() => <ChatContainer />} />
                      <Route path='/frends' render={() => <React.Suspense fallback={<Loader />}>  <FrendsContainer /> </React.Suspense>} />
                      <Route path='/login' render={() => <Login />} />
                      <Route exact path='/' render={() =>  <Redirect to = {'/login'} /> } />

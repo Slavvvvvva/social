@@ -45,14 +45,14 @@ const Frends = React.memo((props) => {
           });
  
         return (
-                <div className={f.frends_item}>
+                <div className={f.frends_item} key = {"dkjkdjkdj"}>
                     <NavLink to={link} >
                         <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
                     </NavLink>
                     <div className={f.frends_description}>
                         <h4>{item.name}</h4>
                     </div>
-                    <button className= {className} onClick={TogleFollouServer} disabled={props.ContainerDisabledButton.some(i => i === item.id)}>{item.followed ? "Follow" : "Following"}</button>
+                    <button className= {className} onClick={TogleFollouServer} disabled={props.ContainerDisabledButton.some(i => i === item.id)} key={item.id}>{item.followed ? "Follow" : "Following"} </button>
                 </div> 
         )
     })
@@ -78,7 +78,7 @@ const Frends = React.memo((props) => {
             activeButton: item.active 
           });
         return (
-            <button className={className} onClick={() => ShowUsers(item.id)} id={item.id} >  {item.id}  </button>
+            <button className={className} onClick={() => ShowUsers(item.id)} key={item.id} >  {item.id}  </button>
         )
     })
 

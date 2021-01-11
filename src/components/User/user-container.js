@@ -5,7 +5,7 @@ import {setUsersPageAC, setUsersStatusAC, EditModeActionCreator, getUserStatusTC
 import { withRouter } from 'react-router-dom'
 import { getAuthData, getFrends, getUserStatus, showLoader, getEditMode} from '../../Redax/users-selector';
 import { compose } from 'redux';
-import { withAuthRedireact } from '../HOC/withAuth-redirect';
+
 
 /* class UserContainer  extends React.Component{
     componentDidMount() {
@@ -28,15 +28,17 @@ import { withAuthRedireact } from '../HOC/withAuth-redirect';
 
 
 const UserContainer = (props) => {
-
-    useEffect( () => {
-        let userId = props.match.params.userId
-        if(!userId){
-            userId = props.ContainerAuthData.id   
+    const userId = props.match.params.userId
+    const id = props.ContainerAuthData.id
+    const isAuth = props.ContainerAuthData.isAuth
+    
+    useEffect ( () => {
+        let userI = userId
+        if(!userI){
+            userI = id   
         }
-        props.getUserDataTC(userId) 
-    },[props.match.params.userId, props.ContainerAuthData.id])
-
+        if (isAuth) props.getUserDataTC(userId) 
+    },[userId, id, isAuth])
     return(
         <User {...props} />
     )
@@ -57,7 +59,6 @@ let mapStateToProps = (state) => {
 export default compose(
    
     withRouter,
-    //withAuthRedireact,
     connect(mapStateToProps,{setUsersPageAC, setUsersStatusAC,
         EditModeActionCreator,pushNewUserDataTC,
         getUserStatusTC,putUserStatusTC,

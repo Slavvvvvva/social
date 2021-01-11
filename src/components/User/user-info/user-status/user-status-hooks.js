@@ -5,10 +5,12 @@ const UserStatus = (props) =>{
     let [chaindg, setChainging] = useState(true)
     let [value, setValue] = useState(props.ContainearUserStatus)
 
+    const ContainearUserStatus =props.ContainearUserStatus
+
     useEffect( () => {
         props.getUserStatusTC((props.match.params.userId) ? props.match.params.userId : props.ContainerAuthData.id)
-        setValue(props.ContainearUserStatus)
-    }, [props.ContainearUserStatus])
+        setValue(ContainearUserStatus)
+    }, [ContainearUserStatus])
 
 
     const ChaingStatusON = () => {
