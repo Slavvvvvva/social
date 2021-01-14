@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { stopSubmit } from "redux-form"
 import { getUserStatus, putFoto, putUserStatus, getUserProfile, putUserData } from "../components/API/api"
 

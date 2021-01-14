@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ui from './ui.module.scss';
 import avatar from '../../Img/982da289bae6d7738358d8fec285acc8.jpg'
 import Loader from '../../Loader/loader';
@@ -36,11 +36,11 @@ const UserInfo = React.memo((props) => {
                     <>
                         <div className={ui.inputWrapper}>
                             <input type='file' id="input_file" onChange={LoadPhoto} />
-                            <label for="input_file"></label>
+                            <label htmlFor="input_file"></label>
                         </div>
                         <div className={ui.buttonWrapper}>
                             <button onClick={chaingeEditMode} id="button_chainge_suer_info" >Edit</button>
-                            <label for="button_chainge_suer_info"></label>
+                            <label htmlFor="button_chainge_suer_info"></label>
                         </div>
                     </>
                 }

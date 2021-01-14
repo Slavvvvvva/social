@@ -25,7 +25,7 @@ const Frends = React.memo((props) => {
     ])
     const [lastActivePagie , setlastActive] = useState(1) 
 
-    const FrendItem = props.ConteinerFrends.FrendsPage.map((item) => {
+    const FrendItem = props.ConteinerFrends.FrendsPage.map((item, i) => {
 
         let link = "/myprofile/" + item.id
 
@@ -45,7 +45,7 @@ const Frends = React.memo((props) => {
           });
  
         return (
-                <div className={f.frends_item} key = {"dkjkdjkdj"}>
+                <div className={f.frends_item} key = {`${i}dkjkdjkdj`}>
                     <NavLink to={link} >
                         <img src={item.photos.small ? item.photos.small : avatar} className={f.avatar} alt="avatar" />
                     </NavLink>

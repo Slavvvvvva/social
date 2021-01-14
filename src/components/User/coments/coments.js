@@ -2,14 +2,14 @@ import React from 'react';
 import c from './coments.module.scss';
 import ComentItem from './coment-item/coment-item.js';
 import { reduxForm, Field, reset } from 'redux-form'
-import { reqiredField, validMaxLenght } from '../../../util/validation';
+import { validMaxLenght } from '../../../util/validation';
 import { TextArea } from '../../Loader/textarea';
 
 const Coments = (props) => {
 
-    const Posts = props.PostsContainer.map((item) => {
+    const Posts = props.PostsContainer.map((item, i) => {
         return (
-            <ComentItem comentText={item.massege} likeCounter={item.likeCounter} />
+            <ComentItem comentText={item.massege} likeCounter={item.likeCounter}  key ={`${i}gjkfjgk`} />
         )
     })
 

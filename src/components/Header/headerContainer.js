@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './header'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {getIsLogginedTC, LogautTC} from '../../Redax/authent-reduser'
+import {LogautTC} from '../../Redax/authent-reduser'
 
 
 class HeaderContainer extends React.Component{

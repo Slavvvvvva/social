@@ -7,7 +7,7 @@ const ComentItem = (props) => {
         <div className = {ci.coment_item}> 
             <img className = {ci.mini_logo} src ={avatar} alt = "mini avatar"/>
             <div className= {ci.comentText}>
-                 <p>{props.comentText} <div> {props.likeCounter} likes</div></p> 
+                 <div>{props.comentText} <span> {props.likeCounter} likes</span></div> 
             </div>
             
         </div>

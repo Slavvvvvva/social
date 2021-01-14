@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import u from './u.module.scss';
 import ComentsContainer from './coments/coments-container';
 import UserInfo from './user-info/user-info';

@@ -33,11 +33,11 @@ const UserContainer = (props) => {
     const isAuth = props.ContainerAuthData.isAuth
     
     useEffect ( () => {
-        let userI = userId
-        if(!userI){
-            userI = id   
+        let currentUser = userId
+        if(!currentUser){
+            currentUser = id   
         }
-        if (isAuth) props.getUserDataTC(userId) 
+        props.getUserDataTC(currentUser) 
     },[userId, id, isAuth])
     return(
         <User {...props} />

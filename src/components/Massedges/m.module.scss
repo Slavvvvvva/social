@@ -19,6 +19,11 @@
         height: calc(100vh - 150px);
         overflow: auto;
         margin: 16px;
+        
+    }
+    .space_messs::-webkit-scrollbar { /* chrome based */
+        width: 0px;  /* ширина scrollbar'a */
+        background: transparent;  /* опционально */
     }
 }
 .user_list {

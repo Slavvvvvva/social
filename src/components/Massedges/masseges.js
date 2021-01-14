@@ -10,13 +10,13 @@ import { reqiredField, validMaxLenght } from '../../util/validation'
 const Chat = (props) => {
     const DialogName = props.ContainerDialogName.map((item) => {
         return (
-            <DialogItem dialog_name={item.name} massege_counter={item.counter} id={item.id} />
+            <DialogItem dialog_name={item.name} massege_counter={item.counter} key={item.id} />
         )
     })
 
-    const MyMessageContent = props.ConteinerMyMessageContent.map((item) => {
+    const MyMessageContent = props.ConteinerMyMessageContent.map((item, i) => {
         return (
-            (item.id === 1) ? <MyMessag texxt={item.text} /> : <OponentMesage texxt={item.text} />
+            (item.id === 1) ? <MyMessag key={i+'hfjdh'} texxt={item.text} /> : <OponentMesage texxt={item.text} key={i+'hfdh'}/>
         )
     })
     
